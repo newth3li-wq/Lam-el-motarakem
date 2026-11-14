@@ -1167,3 +1167,6 @@ html body:not([data-theme="dark"]) .toast{background:#17191C;color:#fff}
 html body:not([data-theme="dark"]) .badge.earned{border-color:#2B2F35}
 html body:not([data-theme="dark"]) :focus-visible{outline:2px solid #17191C;outline-offset:2px}
 body[data-theme="dark"] :focus-visible{outline:2px solid #B9BEC6;outline-offset:2px}
+
+/* 3.5 mobile: the open drawer must sit above the backdrop (it was covered, so taps on menu items hit the backdrop and closed it) */
+@media(max-width:760px){html body .sidebar,html body.sidebar-collapsed .sidebar{z-index:60!important}}
