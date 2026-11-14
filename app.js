@@ -235,3 +235,10 @@ applyMotion(load('motion','auto')==='full',false);
 motionReduce.addEventListener('change',()=>applyMotion(document.documentElement.classList.contains('motion-full'),false));
 $('#motionBtn').onclick=()=>applyMotion(!document.documentElement.classList.contains('motion-full'),true);
 $('#motionSwitch').onchange=e=>applyMotion(e.target.checked,true);
+
+// Mobile drawer: close only when the tap lands OUTSIDE the sidebar (no overlay element can swallow taps meant for menu items)
+document.addEventListener('click',e=>{
+ const sb=$('#sidebar');if(!sb||!sb.classList.contains('open'))return;
+ if(e.target.closest('#sidebar')||e.target.closest('#menuBtn'))return;
+ sb.classList.remove('open');document.body.classList.remove('mobile-menu-open');$('#menuBtn')?.setAttribute('aria-expanded','false');
+});

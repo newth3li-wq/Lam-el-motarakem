@@ -1170,3 +1170,7 @@ body[data-theme="dark"] :focus-visible{outline:2px solid #B9BEC6;outline-offset:
 
 /* 3.5 mobile: the open drawer must sit above the backdrop (it was covered, so taps on menu items hit the backdrop and closed it) */
 @media(max-width:760px){html body .sidebar,html body.sidebar-collapsed .sidebar{z-index:60!important}}
+
+/* 3.6 mobile drawer: the dim layer is visual only, it never receives taps (menu items always get them) */
+html body .sidebar-backdrop,html body.mobile-menu-open .sidebar-backdrop{pointer-events:none!important}
+@media(max-width:760px){html body .sidebar .nav-link,html body .sidebar .profile-mini{pointer-events:auto;touch-action:manipulation}}
