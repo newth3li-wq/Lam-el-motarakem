@@ -1,0 +1,438 @@
+/* ============================================================
+   Palette: «Indigo Ledger» — طبقة لون تجريبية فوق الهوية الأصلية
+   المصدر: RealtimeColors
+     text #DCDEF3 · bg #060814 · primary #98A1E1
+     secondary #212D7E · accent #5566D8
+   زي طبقة التيال: بتشتغل بس لما <html data-palette="indigo">
+   والهوية الأصلية (Pure Black + Silver) لسه تحت زي ما هي.
+   ============================================================ */
+
+/* ---------- tokens: dark ---------- */
+html[data-palette="indigo"][data-theme="dark"] {
+  --bg: #060814;
+  --bg-soft: #090C1C;
+  --surface: #0D1126;
+  --surface-2: #12162F;
+  --surface-3: #181D3C;
+  --line: rgba(152, 161, 225, .14);
+  --line-strong: rgba(152, 161, 225, .27);
+  --ink: #DCDEF3;
+  --ink-2: #BFC4E8;
+  --muted: #8E94BC;
+  --accent: #98A1E1;
+  --accent-ink: #0A0D22;
+  --accent-soft: rgba(152, 161, 225, .14);
+  --accent-line: rgba(152, 161, 225, .34);
+  --silver: #AEB6F0;
+  --glass: rgba(13, 17, 38, .62);
+  --glass-line: rgba(152, 161, 225, .18);
+  --shadow: 0 24px 60px rgba(1, 2, 8, .60);
+  --shadow-sm: 0 10px 26px rgba(1, 2, 8, .45);
+  --ok: #6FE0A8;
+  --warn: #E8CE8A;
+  --err: #FF9C9C;
+  --ring: rgba(152, 161, 225, .55);
+  --scrim: rgba(3, 4, 12, .68);
+
+  --ind-grad: linear-gradient(135deg, #C2C8F5 0%, #8C96E6 100%);
+  --ind-ink: #060814;
+  --ind-glow: 0 10px 30px rgba(85, 102, 216, .28);
+  --ind-hair: rgba(152, 161, 225, .16);
+}
+
+/* ---------- tokens: light ---------- */
+html[data-palette="indigo"][data-theme="light"] {
+  --bg: #E7E9F7;
+  --bg-soft: #DDE1F4;
+  --surface: #FFFFFF;
+  --surface-2: #F4F5FD;
+  --surface-3: #E2E5F6;
+  --line: #A7ADE0;
+  --line-strong: #7C85CB;
+  --ink: #141838;
+  --ink-2: #2A2F5C;
+  --muted: #4B5285;
+  --accent: #3B4CC7;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(59, 76, 199, .10);
+  --accent-line: rgba(59, 76, 199, .38);
+  --silver: #3B4CC7;
+  --glass: rgba(255, 255, 255, .76);
+  --glass-line: rgba(59, 76, 199, .28);
+  --shadow: 0 2px 6px rgba(18, 24, 80, .06), 0 18px 44px rgba(18, 24, 80, .12);
+  --shadow-sm: 0 1px 2px rgba(18, 24, 80, .06), 0 10px 24px rgba(18, 24, 80, .08);
+  --ok: #14653F;
+  --warn: #7A5C14;
+  --err: #A61B12;
+  --ring: rgba(59, 76, 199, .45);
+  --scrim: rgba(20, 24, 56, .42);
+
+  /* the bright indigo stays for fills, the text token above stays readable */
+  --ind-grad: linear-gradient(135deg, #5566D8 0%, #3341B0 100%);
+  --ind-ink: #FFFFFF;
+  --ind-glow: 0 10px 26px rgba(59, 76, 199, .26);
+  --ind-hair: #A7ADE0;
+}
+
+/* ---------- the glow behind everything ---------- */
+html[data-palette="indigo"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 44% at 84% 0%, rgba(85, 102, 216, .22), transparent 70%),
+    radial-gradient(46% 40% at 8% 100%, rgba(33, 45, 126, .28), transparent 72%);
+}
+html[data-palette="indigo"][data-theme="light"] body::before {
+  background:
+    radial-gradient(58% 44% at 84% 0%, rgba(59, 76, 199, .15), transparent 70%),
+    radial-gradient(46% 40% at 8% 100%, rgba(110, 123, 228, .22), transparent 72%);
+}
+
+/* ============================================================
+   Landing / auth
+   ============================================================ */
+html[data-palette="indigo"] .landing {
+  --l-accent: #A9B2EC;
+  --l-accent-ink: #070A1C;
+  --l-accent-hover: #C6CCF5;
+  --l-raised: #0E1230;
+  --l-soft: #131839;
+  --l-line-2: rgba(152, 161, 225, .30);
+  --l-glass: rgba(10, 13, 30, .60);
+  --l-glass-line: rgba(152, 161, 225, .18);
+  --l-glass-hi: rgba(152, 161, 225, .10);
+  --blob-1: rgba(85, 102, 216, .22);
+  --blob-2: rgba(33, 45, 126, .30);
+  --hl-a: #C6CCF5;
+  --hl-b: #98A1E1;
+  --spot: rgba(152, 161, 225, .18);
+  --spot-shadow: 0 20px 44px rgba(1, 2, 10, .50);
+  --l-shadow: 0 26px 60px rgba(1, 2, 10, .60);
+}
+html[data-palette="indigo"][data-theme="light"] .landing {
+  --l-accent: #3B4CC7;
+  --l-accent-ink: #FFFFFF;
+  --l-accent-hover: #2C3AA6;
+  --l-raised: #F4F5FD;
+  --l-soft: #E1E4F6;
+  --l-line-2: #7C85CB;
+  --l-glass: rgba(255, 255, 255, .76);
+  --l-glass-line: rgba(59, 76, 199, .28);
+  --l-glass-hi: rgba(255, 255, 255, .92);
+  --blob-1: rgba(59, 76, 199, .16);
+  --blob-2: rgba(110, 123, 228, .22);
+  --hl-a: #3B4CC7;
+  --hl-b: #6E7BE4;
+  --spot: rgba(59, 76, 199, .10);
+  --spot-shadow: 0 20px 40px rgba(18, 24, 80, .14);
+  --l-shadow: 0 26px 60px rgba(18, 24, 80, .14);
+}
+
+/* nav: the indigo glass bar */
+html[data-palette="indigo"] .landing .brand-mark { color: #B4BCF2; }
+html[data-palette="indigo"][data-theme="light"] .landing .brand-mark { color: #3B4CC7; }
+html[data-palette="indigo"] .landing .nav {
+  background: rgba(6, 8, 20, .72);
+  border-color: rgba(152, 161, 225, .15);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 14px 40px rgba(1, 2, 10, .40);
+}
+html[data-palette="indigo"] .landing.is-scrolled .nav {
+  background: rgba(6, 8, 20, .88);
+  border-color: rgba(152, 161, 225, .22);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .nav {
+  background: rgba(255, 255, 255, .78);
+  border-color: rgba(59, 76, 199, .30);
+  box-shadow: 0 14px 36px rgba(18, 24, 80, .10);
+}
+html[data-palette="indigo"][data-theme="light"] .landing.is-scrolled .nav {
+  background: rgba(255, 255, 255, .92);
+  border-color: rgba(59, 76, 199, .38);
+}
+
+/* primary buttons */
+html[data-palette="indigo"] .landing .btn-primary,
+html[data-palette="indigo"] .btn-primary {
+  background: var(--ind-grad);
+  color: var(--ind-ink);
+  box-shadow: var(--ind-glow);
+}
+html[data-palette="indigo"] .landing .btn-primary:hover {
+  background: var(--ind-grad);
+  filter: brightness(1.06);
+}
+html[data-palette="indigo"] .btn-primary::after,
+html[data-palette="indigo"] .landing .btn-primary::after {
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .45) 50%, transparent 62%);
+}
+
+/* the daily-plan sheet + section blocks get the soft glass tint */
+html[data-palette="indigo"] .landing .plan-sheet {
+  background-image: linear-gradient(160deg, rgba(152, 161, 225, .08), transparent 58%);
+  border-color: var(--l-glass-line);
+  box-shadow: 0 24px 60px rgba(1, 2, 10, .50), inset 0 1px 0 rgba(152, 161, 225, .10);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .plan-sheet {
+  background-image: linear-gradient(160deg, rgba(59, 76, 199, .05), transparent 58%);
+  border-color: var(--line-strong);
+  box-shadow: 0 2px 4px rgba(18, 24, 80, .06), 0 16px 40px rgba(18, 24, 80, .10);
+}
+
+html[data-palette="indigo"] .landing .nav-pill { background: rgba(152, 161, 225, .16); }
+html[data-palette="indigo"][data-theme="light"] .landing .nav-pill { background: rgba(59, 76, 199, .12); }
+html[data-palette="indigo"] .landing .nav-progress { background: var(--silver); }
+
+/* ============================================================
+   App shell
+   ============================================================ */
+html[data-palette="indigo"] .shell .sidebar {
+  background: linear-gradient(180deg, #0C1030 0%, #070A1D 100%);
+  border-inline-end-color: rgba(152, 161, 225, .18);
+  color: #DCDEF3;
+}
+html[data-palette="indigo"] .shell .brand .brand-mark { color: #B4BCF2; }
+html[data-palette="indigo"] .shell .brand-copy strong { color: #F0F2FF; }
+html[data-palette="indigo"] .shell .brand-copy small { color: #9298BE; }
+
+html[data-palette="indigo"] .shell .nav-item { color: #B0B6DA; }
+html[data-palette="indigo"] .shell .nav-item:hover {
+  background: rgba(152, 161, 225, .10);
+  color: #F0F2FF;
+}
+html[data-palette="indigo"] .shell .nav-item.active {
+  background: linear-gradient(135deg, rgba(152, 161, 225, .22), rgba(85, 102, 216, .12));
+  color: #F0F2FF;
+  box-shadow: inset -3px 0 #A9B2EC, 0 0 18px rgba(169, 178, 236, .12);
+}
+html[data-palette="indigo"] .shell .sb-label { color: #8A90B6; }
+html[data-palette="indigo"] .shell .profile-mini { border-color: rgba(152, 161, 225, .18); }
+html[data-palette="indigo"] .shell .profile-mini:hover { background: rgba(152, 161, 225, .07); }
+html[data-palette="indigo"] .shell .profile-mini b { color: #F0F2FF; }
+html[data-palette="indigo"] .shell .profile-mini small { color: #9298BE; }
+html[data-palette="indigo"] .shell .profile-mini .avatar {
+  background: #161C3E;
+  border-color: rgba(152, 161, 225, .32);
+  color: #DCE0FB;
+}
+html[data-palette="indigo"] .shell .sidebar-note {
+  background: rgba(152, 161, 225, .07);
+  border-color: rgba(152, 161, 225, .18);
+  color: #B0B6DA;
+}
+html[data-palette="indigo"] .shell .sidebar-note .note-icon { color: #B4BCF2; }
+html[data-palette="indigo"] .shell .sidebar-bottom { color: #7A80A6; }
+html[data-palette="indigo"][data-theme="light"] .shell .sidebar-bottom { color: #5A618F; }
+
+/* light sidebar */
+html[data-palette="indigo"][data-theme="light"] .shell .sidebar {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF0FB 100%);
+  border-inline-end-color: var(--line);
+  color: #141838;
+  box-shadow: -8px 0 24px rgba(18, 24, 80, .06);
+}
+html[data-palette="indigo"][data-theme="light"] .shell .brand .brand-mark { color: #4453CE; }
+html[data-palette="indigo"][data-theme="light"] .shell .brand-copy strong { color: #141838; }
+html[data-palette="indigo"][data-theme="light"] .shell .brand-copy small { color: #4B5285; }
+html[data-palette="indigo"][data-theme="light"] .shell .nav-item { color: #3B4270; }
+html[data-palette="indigo"][data-theme="light"] .shell .nav-item:hover { background: #E9ECFB; color: #141838; }
+html[data-palette="indigo"][data-theme="light"] .shell .nav-item.active {
+  background: var(--ind-grad);
+  color: var(--ind-ink);
+  box-shadow: 0 8px 20px rgba(59, 76, 199, .24);
+}
+html[data-palette="indigo"][data-theme="light"] .shell .profile-mini { border-color: var(--line); }
+html[data-palette="indigo"][data-theme="light"] .shell .profile-mini:hover { background: #F2F4FE; }
+html[data-palette="indigo"][data-theme="light"] .shell .profile-mini b { color: #141838; }
+html[data-palette="indigo"][data-theme="light"] .shell .profile-mini small { color: #4B5285; }
+html[data-palette="indigo"][data-theme="light"] .shell .profile-mini .avatar {
+  background: #E7EAF9;
+  border-color: #C9CEEC;
+  color: #3341A8;
+}
+html[data-palette="indigo"][data-theme="light"] .shell .sidebar-note {
+  background: #F3F5FE;
+  border-color: var(--line);
+  color: #4E5580;
+}
+html[data-palette="indigo"][data-theme="light"] .shell .sidebar-note .note-icon { color: #4453CE; }
+
+/* topbar + search */
+html[data-palette="indigo"] .shell .topbar { border-bottom-color: rgba(152, 161, 225, .15); }
+html[data-palette="indigo"][data-theme="light"] .shell .topbar { border-bottom-color: var(--line); }
+html[data-palette="indigo"] .shell .global-search {
+  background: rgba(13, 17, 38, .55);
+  border-color: rgba(152, 161, 225, .20);
+}
+html[data-palette="indigo"] .shell .global-search:focus-within {
+  border-color: rgba(152, 161, 225, .45);
+  box-shadow: 0 0 0 3px rgba(85, 102, 216, .16);
+}
+html[data-palette="indigo"][data-theme="light"] .shell .global-search {
+  background: #FFFFFF;
+  border-color: var(--line-strong);
+}
+
+/* cards, panels and stats get the quiet indigo sheen */
+html[data-palette="indigo"] :is(.card, .panel, .stat-card, .subject-card, .plan-card) {
+  background-image: linear-gradient(160deg, rgba(152, 161, 225, .055), transparent 55%);
+}
+html[data-palette="indigo"][data-theme="light"] :is(.card, .panel, .stat-card, .subject-card, .plan-card) {
+  background-image: linear-gradient(160deg, rgba(85, 102, 216, .04), transparent 55%);
+}
+html[data-palette="indigo"] :is(.stat-card, .panel, .card) { box-shadow: var(--shadow-sm); }
+
+/* ---------- dashboard: replace the neutral greys with the palette ---------- */
+html[data-palette="indigo"] .dash .welcome-row {
+  border-color: rgba(152, 161, 225, .18);
+  background:
+    radial-gradient(70% 120% at 92% 0%, rgba(85, 102, 216, .24), transparent 62%),
+    linear-gradient(115deg, #0A0E26, #10152F 58%, #171D3D);
+}
+html[data-palette="indigo"][data-theme="light"] .dash .welcome-row {
+  border-color: var(--line);
+  background:
+    radial-gradient(70% 120% at 92% 0%, rgba(85, 102, 216, .22), transparent 62%),
+    linear-gradient(115deg, #FFFFFF, #E6E9FA);
+}
+html[data-palette="indigo"] .dash .welcome-row .eyebrow,
+html[data-palette="indigo"] .dash .welcome-row h1 span { color: #B4BCF2; }
+html[data-palette="indigo"][data-theme="light"] .dash .welcome-row .eyebrow,
+html[data-palette="indigo"][data-theme="light"] .dash .welcome-row h1 span { color: #2F3DAE; }
+
+html[data-palette="indigo"] .welcome-art .sun {
+  background: linear-gradient(140deg, #D3D9FA, #8C96E6);
+  box-shadow: 0 0 46px rgba(140, 150, 230, .35);
+}
+html[data-palette="indigo"] .welcome-art .book-one { background: #8C96E6; }
+html[data-palette="indigo"] .welcome-art .book-two { background: #3341A8; }
+html[data-palette="indigo"] .welcome-art .spark { color: #B4BCF2; }
+html[data-palette="indigo"][data-theme="light"] .welcome-art .spark { color: #3B4CC7; }
+html[data-palette="indigo"] .welcome-art .book { box-shadow: 0 7px 0 rgba(1, 2, 10, .40); }
+
+html[data-palette="indigo"] .dash .stat-icon,
+html[data-palette="indigo"] .dash .level-box {
+  background: rgba(152, 161, 225, .12);
+  color: #B4BCF2;
+  box-shadow: inset 0 0 0 1px rgba(152, 161, 225, .20), 0 0 18px rgba(85, 102, 216, .12);
+}
+html[data-palette="indigo"][data-theme="light"] .dash .stat-icon,
+html[data-palette="indigo"][data-theme="light"] .dash .level-box {
+  background: #E8EBFA;
+  color: #3341A8;
+  box-shadow: inset 0 0 0 1px #AEB4E4;
+}
+html[data-palette="indigo"] .dash .bar { background: rgba(152, 161, 225, .12); }
+html[data-palette="indigo"] .dash .bar span { background: linear-gradient(90deg, #4C5DD6, #A9B2EC); }
+html[data-palette="indigo"][data-theme="light"] .dash .bar { background: #DCE0F4; }
+html[data-palette="indigo"][data-theme="light"] .dash .bar span { background: linear-gradient(90deg, #3341A8, #5566D8); }
+html[data-palette="indigo"] .dash .task-check { accent-color: #98A1E1; }
+html[data-palette="indigo"][data-theme="light"] .dash .task-check { accent-color: #3B4CC7; }
+html[data-palette="indigo"] .dash .primary-btn {
+  background: var(--ind-grad);
+  color: var(--ind-ink);
+  box-shadow: var(--ind-glow);
+}
+html[data-palette="indigo"] .dash .stat-card em { color: #9AA0C4; }
+html[data-palette="indigo"][data-theme="light"] .dash .stat-card em { color: #4B5285; }
+
+/* progress bars keep the gradient, not the flat token */
+html[data-palette="indigo"] .track > i,
+html[data-palette="indigo"] .unit-mini > i {
+  background-image: linear-gradient(90deg, #4C5DD6, #A9B2EC);
+}
+html[data-palette="indigo"][data-theme="light"] .track > i,
+html[data-palette="indigo"][data-theme="light"] .unit-mini > i {
+  background-image: linear-gradient(90deg, #3341A8, #6E7BE4);
+}
+
+/* ============================================================
+   Light mode pass: stronger ink, real borders, more indigo
+   ============================================================ */
+
+/* the small indigo rules that mark the sections */
+html[data-palette="indigo"] .landing .eyebrow::before { background: var(--ind-grad); }
+html[data-palette="indigo"] .landing .sec-head h2::after {
+  background: linear-gradient(90deg, var(--l-accent), transparent);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .sec-head h2::after {
+  background: linear-gradient(90deg, #5566D8, rgba(85, 102, 216, 0));
+}
+
+/* the numbered marks and the track letters */
+html[data-palette="indigo"] .landing .step-n,
+html[data-palette="indigo"] .landing .feat-idx { color: var(--l-accent); }
+html[data-palette="indigo"] .landing .track-ico {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+  color: var(--l-accent);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .track-ico {
+  background: rgba(59, 76, 199, .08);
+  border-color: var(--line-strong);
+}
+
+/* the "soon" panel and the closing band wear the tint too */
+html[data-palette="indigo"] .landing .soon {
+  border-color: var(--l-line-2);
+  background: linear-gradient(160deg, rgba(152, 161, 225, .07), transparent 62%);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .soon {
+  background: linear-gradient(160deg, rgba(85, 102, 216, .10), transparent 62%);
+}
+html[data-palette="indigo"] .landing .soon li::before { border-color: var(--l-accent); }
+html[data-palette="indigo"] .landing .cta {
+  border-color: var(--l-line-2);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(85, 102, 216, .16), transparent 70%),
+    linear-gradient(180deg, rgba(152, 161, 225, .05), transparent);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .cta {
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(85, 102, 216, .20), transparent 70%),
+    linear-gradient(180deg, #F2F4FE, #E4E7F8);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .cta h2 { color: #141838; }
+
+/* the daily sheet: indigo header, indigo footer strip, indigo row numbers */
+html[data-palette="indigo"] .landing .sheet-head {
+  background: linear-gradient(180deg, rgba(152, 161, 225, .07), transparent);
+  border-bottom-color: var(--accent-line);
+}
+html[data-palette="indigo"][data-theme="light"] .landing .sheet-head {
+  background: linear-gradient(180deg, #E9EBFB, rgba(233, 235, 251, 0));
+}
+html[data-palette="indigo"] .landing .sheet-tag {
+  color: var(--l-accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+html[data-palette="indigo"] .landing .sheet-rule { background: var(--l-accent); }
+html[data-palette="indigo"] .landing .row-n { color: var(--l-accent); }
+html[data-palette="indigo"] .landing .sheet-foot { background: var(--accent-soft); }
+
+/* light cards sit on the tinted page, so their edge does the separating */
+html[data-palette="indigo"][data-theme="light"] :is(.card, .panel, .stat-card, .subject-card, .plan-card, .step, .feat, .track, .dash .dash-warnings li) {
+  border-color: var(--line);
+}
+html[data-palette="indigo"][data-theme="light"] :is(.stat-card, .panel, .card, .subject-card) {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .95) inset, 0 2px 4px rgba(18, 24, 80, .05), 0 10px 24px rgba(18, 24, 80, .07);
+}
+
+/* the breadcrumb slash is a separator, not a disabled item */
+html[data-palette="indigo"] .shell .breadcrumb span { color: var(--muted); opacity: .7; }
+
+/* focus + selection follow the palette */
+html[data-palette="indigo"] :focus-visible {
+  outline-color: #A9B2EC;
+  box-shadow: 0 0 0 4px rgba(85, 102, 216, .18);
+}
+html[data-palette="indigo"][data-theme="light"] :focus-visible {
+  outline-color: #3B4CC7;
+  box-shadow: 0 0 0 4px rgba(59, 76, 199, .18);
+}
+html[data-palette="indigo"] ::selection { background: #5566D8; color: #F2F4FF; }

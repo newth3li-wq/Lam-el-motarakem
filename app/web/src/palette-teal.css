@@ -1,0 +1,439 @@
+/* ============================================================
+   Palette: «Modern Teal» — طبقة لون اختيارية فوق الهوية الأصلية
+   الأصل (Pure Black + Silver) لسه موجود زي ما هو؛ الملف ده
+   بيشتغل بس لما <html data-palette="teal">، وبيتشال بسويتش.
+   ============================================================ */
+
+/* ---------- tokens: dark ---------- */
+html[data-palette="teal"][data-theme="dark"] {
+  --bg: #04161A;
+  --bg-soft: #061E23;
+  --surface: #0A2429;
+  --surface-2: #0D2C32;
+  --surface-3: #11363D;
+  --line: rgba(120, 226, 211, .13);
+  --line-strong: rgba(120, 226, 211, .26);
+  --ink: #EAF7F4;
+  --ink-2: #C7E6E1;
+  --muted: #8DB2AE;
+  --accent: #23C7B4;
+  --accent-ink: #03211E;
+  --accent-soft: rgba(35, 199, 180, .14);
+  --accent-line: rgba(35, 199, 180, .34);
+  --silver: #6FE3D2;
+  --glass: rgba(10, 36, 41, .62);
+  --glass-line: rgba(111, 227, 210, .16);
+  --shadow: 0 24px 60px rgba(0, 8, 10, .55);
+  --shadow-sm: 0 10px 26px rgba(0, 8, 10, .40);
+  --ok: #6FE0A8;
+  --warn: #E8CE8A;
+  --err: #FF9C9C;
+  --ring: rgba(35, 199, 180, .55);
+  --scrim: rgba(2, 12, 14, .66);
+
+  --teal-grad: linear-gradient(135deg, #3BE0CB 0%, #12A794 100%);
+  --teal-ink: #03211E;
+  --teal-glow: 0 10px 30px rgba(24, 197, 178, .22);
+  --teal-hair: rgba(111, 227, 210, .16);
+}
+
+/* ---------- tokens: light ---------- */
+html[data-palette="teal"][data-theme="light"] {
+  --bg: #D9ECE7;
+  --bg-soft: #CDE5DE;
+  --surface: #FFFFFF;
+  --surface-2: #F3FBF8;
+  --surface-3: #D5EAE4;
+  --line: #9CC9BE;
+  --line-strong: #6FA89B;
+  --ink: #06231F;
+  --ink-2: #1B3B36;
+  --muted: #3F5F5A;
+  --accent: #067064;
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(6, 112, 100, .10);
+  --accent-line: rgba(6, 112, 100, .38);
+  --silver: #067064;
+  --glass: rgba(255, 255, 255, .74);
+  --glass-line: rgba(6, 112, 100, .28);
+  --shadow: 0 2px 6px rgba(4, 59, 52, .06), 0 18px 44px rgba(4, 59, 52, .12);
+  --shadow-sm: 0 1px 2px rgba(4, 59, 52, .06), 0 10px 24px rgba(4, 59, 52, .08);
+  --ok: #14653F;
+  --warn: #7A5C14;
+  --err: #A61B12;
+  --ring: rgba(6, 112, 100, .45);
+  --scrim: rgba(6, 35, 31, .42);
+
+  /* bright teal stays for fills, the text token above stays readable */
+  --teal-grad: linear-gradient(135deg, #18B3A1 0%, #0E9C8B 100%);
+  --teal-ink: #04231F;
+  --teal-glow: 0 10px 26px rgba(14, 156, 139, .26);
+  --teal-hair: #9CC9BE;
+}
+
+/* ---------- the glow behind everything ---------- */
+html[data-palette="teal"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(58% 44% at 84% 0%, rgba(35, 199, 180, .17), transparent 70%),
+    radial-gradient(46% 40% at 8% 100%, rgba(35, 199, 180, .08), transparent 72%);
+}
+html[data-palette="teal"][data-theme="light"] body::before {
+  background:
+    radial-gradient(58% 44% at 84% 0%, rgba(6, 112, 100, .16), transparent 70%),
+    radial-gradient(46% 40% at 8% 100%, rgba(24, 179, 161, .22), transparent 72%);
+}
+
+/* ============================================================
+   Landing / auth
+   ============================================================ */
+html[data-palette="teal"] .landing {
+  --l-accent: #2FD9C4;
+  --l-accent-ink: #04211E;
+  --l-accent-hover: #6FEBDC;
+  --l-raised: #0C2A30;
+  --l-soft: #10343B;
+  --l-line-2: rgba(111, 227, 210, .28);
+  --l-glass: rgba(8, 30, 35, .58);
+  --l-glass-line: rgba(111, 227, 210, .16);
+  --l-glass-hi: rgba(111, 227, 210, .10);
+  --blob-1: rgba(35, 199, 180, .18);
+  --blob-2: rgba(35, 199, 180, .08);
+  --hl-a: #6FEBDC;
+  --hl-b: #2FD9C4;
+  --spot: rgba(111, 227, 210, .18);
+  --spot-shadow: 0 20px 44px rgba(0, 8, 10, .45);
+  --l-shadow: 0 26px 60px rgba(0, 8, 10, .55);
+}
+html[data-palette="teal"][data-theme="light"] .landing {
+  --l-accent: #067064;
+  --l-accent-ink: #FFFFFF;
+  --l-accent-hover: #04564A;
+  --l-raised: #F3FBF8;
+  --l-soft: #D9EEE8;
+  --l-line-2: #6FA89B;
+  --l-glass: rgba(255, 255, 255, .74);
+  --l-glass-line: rgba(6, 112, 100, .28);
+  --l-glass-hi: rgba(255, 255, 255, .92);
+  --blob-1: rgba(6, 112, 100, .17);
+  --blob-2: rgba(24, 179, 161, .20);
+  --hl-a: #067064;
+  --hl-b: #18B3A1;
+  --spot: rgba(6, 112, 100, .10);
+  --spot-shadow: 0 20px 40px rgba(4, 59, 52, .14);
+  --l-shadow: 0 26px 60px rgba(4, 59, 52, .14);
+}
+
+/* nav: the teal glass bar */
+html[data-palette="teal"] .landing .brand-mark { color: #7FE3D4; }
+html[data-palette="teal"][data-theme="light"] .landing .brand-mark { color: #067064; }
+html[data-palette="teal"] .landing .nav {
+  background: rgba(5, 24, 29, .72);
+  border-color: rgba(111, 227, 210, .14);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 14px 40px rgba(0, 8, 10, .35);
+}
+html[data-palette="teal"] .landing.is-scrolled .nav {
+  background: rgba(5, 24, 29, .88);
+  border-color: rgba(111, 227, 210, .20);
+}
+html[data-palette="teal"][data-theme="light"] .landing .nav {
+  background: rgba(255, 255, 255, .76);
+  border-color: rgba(6, 112, 100, .30);
+  box-shadow: 0 14px 36px rgba(4, 59, 52, .10);
+}
+html[data-palette="teal"][data-theme="light"] .landing.is-scrolled .nav {
+  background: rgba(255, 255, 255, .92);
+  border-color: rgba(6, 112, 100, .38);
+}
+
+/* primary buttons */
+html[data-palette="teal"] .landing .btn-primary,
+html[data-palette="teal"] .btn-primary {
+  background: var(--teal-grad);
+  color: var(--teal-ink);
+  box-shadow: var(--teal-glow);
+}
+html[data-palette="teal"] .landing .btn-primary:hover {
+  background: var(--teal-grad);
+  filter: brightness(1.07);
+}
+html[data-palette="teal"] .btn-primary::after,
+html[data-palette="teal"] .landing .btn-primary::after {
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .45) 50%, transparent 62%);
+}
+
+/* the daily-plan sheet + section blocks get the soft glass tint */
+html[data-palette="teal"] .landing .plan-sheet {
+  background-image: linear-gradient(160deg, rgba(111, 227, 210, .08), transparent 58%);
+  border-color: var(--l-glass-line);
+  box-shadow: 0 24px 60px rgba(0, 8, 10, .45), inset 0 1px 0 rgba(111, 227, 210, .10);
+}
+html[data-palette="teal"][data-theme="light"] .landing .plan-sheet {
+  background-image: linear-gradient(160deg, rgba(6, 112, 100, .05), transparent 58%);
+  border-color: var(--line-strong);
+  box-shadow: 0 2px 4px rgba(4, 59, 52, .06), 0 16px 40px rgba(4, 59, 52, .10);
+}
+
+html[data-palette="teal"] .landing .nav-pill { background: rgba(35, 199, 180, .16); }
+html[data-palette="teal"][data-theme="light"] .landing .nav-pill { background: rgba(14, 156, 139, .12); }
+html[data-palette="teal"] .landing .nav-progress { background: var(--silver); }
+
+/* ============================================================
+   App shell
+   ============================================================ */
+html[data-palette="teal"] .shell .sidebar {
+  background:
+    linear-gradient(180deg, #0A262C 0%, #061B20 100%);
+  border-inline-end-color: rgba(111, 227, 210, .16);
+  color: #EAF7F4;
+}
+html[data-palette="teal"] .shell .brand .brand-mark { color: #7FE3D4; }
+html[data-palette="teal"] .shell .brand-copy strong { color: #F2FFFC; }
+html[data-palette="teal"] .shell .brand-copy small { color: #8FB3AF; }
+
+html[data-palette="teal"] .shell .nav-item { color: #A9C9C5; }
+html[data-palette="teal"] .shell .nav-item:hover {
+  background: rgba(111, 227, 210, .08);
+  color: #F2FFFC;
+}
+html[data-palette="teal"] .shell .nav-item.active {
+  background: linear-gradient(135deg, rgba(59, 224, 203, .20), rgba(18, 167, 148, .10));
+  color: #F2FFFC;
+  box-shadow: inset -3px 0 #2FD9C4, 0 0 18px rgba(47, 217, 196, .10);
+}
+html[data-palette="teal"] .shell .sb-label { color: #7FA7A3; }
+html[data-palette="teal"] .shell .profile-mini { border-color: rgba(111, 227, 210, .16); }
+html[data-palette="teal"] .shell .profile-mini:hover { background: rgba(111, 227, 210, .06); }
+html[data-palette="teal"] .shell .profile-mini b { color: #F2FFFC; }
+html[data-palette="teal"] .shell .profile-mini small { color: #8FB3AF; }
+html[data-palette="teal"] .shell .profile-mini .avatar {
+  background: #0E343B;
+  border-color: rgba(111, 227, 210, .30);
+  color: #BFF4EC;
+}
+html[data-palette="teal"] .shell .sidebar-note {
+  background: rgba(111, 227, 210, .06);
+  border-color: rgba(111, 227, 210, .16);
+  color: #A9C9C5;
+}
+html[data-palette="teal"] .shell .sidebar-note .note-icon { color: #7FE3D4; }
+html[data-palette="teal"] .shell .sidebar-bottom { color: #6F918D; }
+html[data-palette="teal"][data-theme="light"] .shell .sidebar-bottom { color: #4C6B67; }
+
+/* light sidebar */
+html[data-palette="teal"][data-theme="light"] .shell .sidebar {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF9F6 100%);
+  border-inline-end-color: var(--line);
+  color: #0B2A28;
+  box-shadow: -8px 0 24px rgba(4, 59, 52, .06);
+}
+html[data-palette="teal"][data-theme="light"] .shell .brand .brand-mark { color: #0E9C8B; }
+html[data-palette="teal"][data-theme="light"] .shell .brand-copy strong { color: #0B2A28; }
+html[data-palette="teal"][data-theme="light"] .shell .brand-copy small { color: #3F5F5A; }
+html[data-palette="teal"][data-theme="light"] .shell .nav-item { color: #33534E; }
+html[data-palette="teal"][data-theme="light"] .shell .nav-item:hover { background: #E4F5F1; color: #06231F; }
+html[data-palette="teal"][data-theme="light"] .shell .nav-item.active {
+  background: var(--teal-grad);
+  color: var(--teal-ink);
+  box-shadow: 0 8px 20px rgba(9, 112, 99, .22);
+}
+html[data-palette="teal"][data-theme="light"] .shell .profile-mini { border-color: var(--line); }
+html[data-palette="teal"][data-theme="light"] .shell .profile-mini:hover { background: #F0FAF8; }
+html[data-palette="teal"][data-theme="light"] .shell .profile-mini b { color: #0B2A28; }
+html[data-palette="teal"][data-theme="light"] .shell .profile-mini small { color: #3F5F5A; }
+html[data-palette="teal"][data-theme="light"] .shell .profile-mini .avatar {
+  background: #E3F3EF;
+  border-color: #C6E4DD;
+  color: #0E6E63;
+}
+html[data-palette="teal"][data-theme="light"] .shell .sidebar-note {
+  background: #F2FBF9;
+  border-color: var(--line);
+  color: #47635F;
+}
+html[data-palette="teal"][data-theme="light"] .shell .sidebar-note .note-icon { color: #0E9C8B; }
+
+/* topbar + search */
+html[data-palette="teal"] .shell .topbar { border-bottom-color: rgba(111, 227, 210, .14); }
+html[data-palette="teal"][data-theme="light"] .shell .topbar { border-bottom-color: var(--line); }
+html[data-palette="teal"] .shell .global-search {
+  background: rgba(10, 36, 41, .55);
+  border-color: rgba(111, 227, 210, .18);
+}
+html[data-palette="teal"] .shell .global-search:focus-within {
+  border-color: rgba(111, 227, 210, .45);
+  box-shadow: 0 0 0 3px rgba(35, 199, 180, .14);
+}
+html[data-palette="teal"][data-theme="light"] .shell .global-search {
+  background: #FFFFFF;
+  border-color: var(--line-strong);
+}
+
+/* cards, panels and stats get the quiet teal sheen */
+html[data-palette="teal"] :is(.card, .panel, .stat-card, .subject-card, .plan-card) {
+  background-image: linear-gradient(160deg, rgba(111, 227, 210, .05), transparent 55%);
+}
+html[data-palette="teal"][data-theme="light"] :is(.card, .panel, .stat-card, .subject-card, .plan-card) {
+  background-image: linear-gradient(160deg, rgba(14, 156, 139, .04), transparent 55%);
+}
+html[data-palette="teal"] :is(.stat-card, .panel, .card) { box-shadow: var(--shadow-sm); }
+
+/* ---------- dashboard: replace the neutral greys with the palette ---------- */
+html[data-palette="teal"] .dash .welcome-row {
+  border-color: rgba(111, 227, 210, .16);
+  background:
+    radial-gradient(70% 120% at 92% 0%, rgba(35, 199, 180, .18), transparent 62%),
+    linear-gradient(115deg, #072027, #0A2A31 58%, #0D343B);
+}
+html[data-palette="teal"][data-theme="light"] .dash .welcome-row {
+  border-color: var(--line);
+  background:
+    radial-gradient(70% 120% at 92% 0%, rgba(24, 179, 161, .26), transparent 62%),
+    linear-gradient(115deg, #FFFFFF, #DFF4EE);
+}
+html[data-palette="teal"] .dash .welcome-row .eyebrow,
+html[data-palette="teal"] .dash .welcome-row h1 span { color: #7FE3D4; }
+html[data-palette="teal"][data-theme="light"] .dash .welcome-row .eyebrow,
+html[data-palette="teal"][data-theme="light"] .dash .welcome-row h1 span { color: #067064; }
+
+html[data-palette="teal"] .welcome-art .sun {
+  background: linear-gradient(140deg, #A6F7EA, #2FD9C4);
+  box-shadow: 0 0 46px rgba(47, 217, 196, .35);
+}
+html[data-palette="teal"] .welcome-art .book-one { background: #2FD9C4; }
+html[data-palette="teal"] .welcome-art .book-two { background: #0E7F73; }
+html[data-palette="teal"] .welcome-art .spark { color: #7FE3D4; }
+html[data-palette="teal"][data-theme="light"] .welcome-art .spark { color: #067064; }
+html[data-palette="teal"] .welcome-art .book { box-shadow: 0 7px 0 rgba(0, 10, 12, .35); }
+
+html[data-palette="teal"] .dash .stat-icon,
+html[data-palette="teal"] .dash .level-box {
+  background: rgba(35, 199, 180, .12);
+  color: #7FE3D4;
+  box-shadow: inset 0 0 0 1px rgba(111, 227, 210, .18), 0 0 18px rgba(35, 199, 180, .10);
+}
+html[data-palette="teal"][data-theme="light"] .dash .stat-icon,
+html[data-palette="teal"][data-theme="light"] .dash .level-box {
+  background: #DFF4EF;
+  color: #05695F;
+  box-shadow: inset 0 0 0 1px #8FC5B9;
+}
+html[data-palette="teal"] .dash .bar { background: rgba(111, 227, 210, .12); }
+html[data-palette="teal"] .dash .bar span { background: linear-gradient(90deg, #12A794, #3BE0CB); }
+html[data-palette="teal"][data-theme="light"] .dash .bar { background: #CFE9E3; }
+html[data-palette="teal"][data-theme="light"] .dash .bar span { background: linear-gradient(90deg, #05695F, #18B3A1); }
+html[data-palette="teal"] .dash .task-check { accent-color: #2FD9C4; }
+html[data-palette="teal"][data-theme="light"] .dash .task-check { accent-color: #067064; }
+html[data-palette="teal"] .dash .primary-btn {
+  background: var(--teal-grad);
+  color: var(--teal-ink);
+  box-shadow: var(--teal-glow);
+}
+html[data-palette="teal"] .dash .stat-card em { color: #93BDB8; }
+html[data-palette="teal"][data-theme="light"] .dash .stat-card em { color: #3F5F5A; }
+
+/* progress bars keep the gradient, not the flat token */
+html[data-palette="teal"] .track > i,
+html[data-palette="teal"] .unit-mini > i {
+  background-image: linear-gradient(90deg, #12A794, #3BE0CB);
+}
+html[data-palette="teal"][data-theme="light"] .track > i,
+html[data-palette="teal"][data-theme="light"] .unit-mini > i {
+  background-image: linear-gradient(90deg, #067064, #18B3A1);
+}
+
+/* ============================================================
+   Light mode pass: stronger ink, real borders, more teal
+   ============================================================ */
+
+/* the small teal rules that mark the sections */
+html[data-palette="teal"] .landing .eyebrow::before { background: var(--teal-grad); }
+html[data-palette="teal"] .landing .sec-head h2::after {
+  background: linear-gradient(90deg, var(--l-accent), transparent);
+}
+html[data-palette="teal"][data-theme="light"] .landing .sec-head h2::after {
+  background: linear-gradient(90deg, #18B3A1, rgba(24, 179, 161, 0));
+}
+
+/* the numbered marks and the track letters */
+html[data-palette="teal"] .landing .step-n,
+html[data-palette="teal"] .landing .feat-idx { color: var(--l-accent); }
+html[data-palette="teal"] .landing .track-ico {
+  background: var(--accent-soft);
+  border-color: var(--accent-line);
+  color: var(--l-accent);
+}
+html[data-palette="teal"][data-theme="light"] .landing .track-ico {
+  background: rgba(6, 112, 100, .08);
+  border-color: var(--line-strong);
+}
+
+/* the "soon" panel and the closing band wear the tint too */
+html[data-palette="teal"] .landing .soon {
+  border-color: var(--l-line-2);
+  background: linear-gradient(160deg, rgba(111, 227, 210, .07), transparent 62%);
+}
+html[data-palette="teal"][data-theme="light"] .landing .soon {
+  background: linear-gradient(160deg, rgba(24, 179, 161, .10), transparent 62%);
+}
+html[data-palette="teal"] .landing .soon li::before { border-color: var(--l-accent); }
+html[data-palette="teal"] .landing .cta {
+  border-color: var(--l-line-2);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(24, 179, 161, .14), transparent 70%),
+    linear-gradient(180deg, rgba(111, 227, 210, .05), transparent);
+}
+html[data-palette="teal"][data-theme="light"] .landing .cta {
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(24, 179, 161, .20), transparent 70%),
+    linear-gradient(180deg, #F1FBF8, #E1F4EE);
+}
+html[data-palette="teal"][data-theme="light"] .landing .cta h2 { color: #06231F; }
+
+/* the daily sheet: teal header, teal footer strip, teal row numbers */
+html[data-palette="teal"] .landing .sheet-head {
+  background: linear-gradient(180deg, rgba(111, 227, 210, .07), transparent);
+  border-bottom-color: var(--accent-line);
+}
+html[data-palette="teal"][data-theme="light"] .landing .sheet-head {
+  background: linear-gradient(180deg, #E7F7F3, rgba(231, 247, 243, 0));
+}
+html[data-palette="teal"] .landing .sheet-tag {
+  color: var(--l-accent);
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+html[data-palette="teal"] .landing .sheet-rule { background: var(--l-accent); }
+html[data-palette="teal"] .landing .row-n { color: var(--l-accent); }
+html[data-palette="teal"] .landing .sheet-foot { background: var(--accent-soft); }
+
+/* light cards sit on the tinted page, so their edge does the separating */
+html[data-palette="teal"][data-theme="light"] :is(.card, .panel, .stat-card, .subject-card, .plan-card, .step, .feat, .track, .dash .dash-warnings li) {
+  border-color: var(--line);
+}
+html[data-palette="teal"][data-theme="light"] :is(.stat-card, .panel, .card, .subject-card) {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .95) inset, 0 2px 4px rgba(4, 59, 52, .05), 0 10px 24px rgba(4, 59, 52, .07);
+}
+
+/* the breadcrumb slash is a separator, not a disabled item */
+html[data-palette="teal"] .shell .breadcrumb span { color: var(--muted); opacity: .7; }
+
+/* focus + selection follow the palette */
+html[data-palette="teal"] :focus-visible {
+  outline-color: #2FD9C4;
+  box-shadow: 0 0 0 4px rgba(35, 199, 180, .16);
+}
+html[data-palette="teal"][data-theme="light"] :focus-visible {
+  outline-color: #067064;
+  box-shadow: 0 0 0 4px rgba(6, 112, 100, .18);
+}
+html[data-palette="teal"] ::selection { background: #2FD9C4; color: #04161A; }
+
+/* no motion: the palette itself adds no animation */
+html:not(.motion-full) .landing .nav { transition: none; }

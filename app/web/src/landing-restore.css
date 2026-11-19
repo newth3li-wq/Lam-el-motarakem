@@ -1,0 +1,1313 @@
+/* ============================================================
+   Landing + auth — the original «لم المتراكم» pages
+   Restores the old floating nav, hero, preview card, steps,
+   features, tracks, "soon" panel and CTA.
+   ============================================================ */
+
+.landing {
+  --wrap: 1120px;
+  --l-ease: cubic-bezier(.22, 1, .36, 1);
+  --l-accent: #D4D8DE;
+  --l-accent-ink: #0A0A0B;
+  --l-accent-hover: #FFFFFF;
+  --l-raised: #101113;
+  --l-soft: #17191C;
+  --l-line-2: #34383E;
+  --l-glass: rgba(18, 19, 22, .60);
+  --l-glass-line: rgba(255, 255, 255, .10);
+  --l-glass-hi: rgba(255, 255, 255, .07);
+  --blob-1: rgba(185, 190, 198, .17);
+  --blob-2: rgba(185, 190, 198, .07);
+  --hl-a: #C9CFD6;
+  --hl-b: #FFFFFF;
+  --spot: rgba(212, 216, 222, .16);
+  --spot-shadow: 0 20px 44px rgba(0, 0, 0, .45);
+  --l-shadow: 0 26px 60px rgba(0, 0, 0, .55);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: clip;
+}
+
+html[data-theme="light"] .landing {
+  --l-accent: #202327;
+  --l-accent-ink: #FFFFFF;
+  --l-accent-hover: #000000;
+  --l-raised: #EEF0F2;
+  --l-soft: #E6E8EB;
+  --l-line-2: #CDD0D5;
+  --l-glass: rgba(255, 255, 255, .66);
+  --l-glass-line: rgba(0, 0, 0, .08);
+  --l-glass-hi: rgba(255, 255, 255, .9);
+  --blob-1: rgba(110, 118, 130, .22);
+  --blob-2: rgba(110, 118, 130, .10);
+  --hl-a: #202327;
+  --hl-b: #7C838C;
+  --spot: rgba(32, 35, 39, .07);
+  --spot-shadow: 0 20px 40px rgba(20, 22, 26, .12);
+  --l-shadow: 0 26px 60px rgba(20, 22, 26, .12);
+}
+
+.landing .wrap {
+  width: min(var(--wrap), calc(100% - 32px));
+  margin-inline: auto;
+}
+.landing main { flex: 1; }
+
+.landing h1,
+.landing h2,
+.landing h3 { margin: 0; letter-spacing: 0; }
+.landing p { margin: 0; }
+.landing ul { margin: 0; padding: 0; list-style: none; }
+.landing a { text-decoration: none; }
+
+.landing .ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+/* three slow silver blooms: they drift on their own AND follow the scroll
+   through --sy, which the page updates in one rAF loop */
+.landing .ambient span {
+  position: absolute;
+  border-radius: 50%;
+  translate: 0 clamp(-170px, calc(var(--sy, 0) * .055px), 170px);
+  will-change: transform;
+}
+.landing .ambient .a1 {
+  width: 780px;
+  height: 780px;
+  top: -300px;
+  inset-inline-end: -160px;
+  background: radial-gradient(closest-side, var(--blob-1), transparent);
+  animation: bloomA 26s ease-in-out infinite;
+}
+.landing .ambient .a2 {
+  width: 640px;
+  height: 640px;
+  top: 520px;
+  inset-inline-start: -220px;
+  background: radial-gradient(closest-side, var(--blob-2), transparent);
+  animation: bloomB 34s ease-in-out infinite;
+}
+.landing .ambient .a3 {
+  width: 540px;
+  height: 540px;
+  top: 1350px;
+  inset-inline-end: -140px;
+  background: radial-gradient(closest-side, var(--blob-2), transparent);
+  animation: bloomB 42s ease-in-out infinite reverse;
+}
+@keyframes bloomA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-70px, 70px, 0) scale(1.13); }
+}
+@keyframes bloomB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(80px, -60px, 0) scale(1.16); }
+}
+
+.landing .glass {
+  background: var(--l-glass);
+  border: 1px solid var(--l-glass-line);
+  box-shadow: var(--l-shadow), inset 0 1px 0 var(--l-glass-hi);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  backdrop-filter: blur(18px) saturate(1.25);
+}
+
+/* ---------- buttons ---------- */
+.landing .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease,
+    scale 160ms var(--l-ease), translate 220ms var(--l-ease);
+}
+.landing .btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: var(--l-accent);
+  color: var(--l-accent-ink);
+}
+.landing .btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, .65) 50%, transparent 62%);
+  translate: -135% 0;
+  transition: translate 700ms var(--l-ease);
+  pointer-events: none;
+}
+.landing .btn-primary:hover::after { translate: 135% 0; }
+.landing .btn-primary:hover { background: var(--l-accent-hover); translate: 0 -2px; }
+.landing .btn-ghost { background: transparent; border-color: var(--l-line-2); color: var(--ink); }
+.landing .btn-ghost:hover { border-color: var(--silver); background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.landing .btn:active { scale: .97; translate: 0 0; }
+.landing .btn-sm { height: 40px; padding: 0 18px; font-size: 13px; border-radius: 12px; }
+.landing .btn .arr { transition: translate 280ms var(--l-ease); }
+.landing .btn:hover .arr { translate: -5px 0; }
+
+/* ---------- nav ---------- */
+.landing .nav {
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  margin: 12px auto 0;
+  width: min(var(--wrap), calc(100% - 24px));
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 10px 8px 14px;
+  border-radius: 20px;
+  transition:
+    background-color 320ms var(--l-ease),
+    box-shadow 320ms var(--l-ease),
+    border-color 320ms var(--l-ease),
+    padding-block 320ms var(--l-ease);
+}
+.landing.is-scrolled .nav {
+  padding-block: 6px;
+  border-color: var(--l-glass-hi);
+  background: color-mix(in srgb, var(--l-glass) 88%, var(--surface));
+  box-shadow: var(--l-shadow), 0 10px 30px rgba(0, 0, 0, .22), inset 0 1px 0 var(--l-glass-hi);
+}
+html[data-theme="light"] .landing.is-scrolled .nav { box-shadow: var(--l-shadow), 0 10px 26px rgba(20, 22, 26, .09), inset 0 1px 0 var(--l-glass-hi); }
+
+/* reading progress, drawn inside the floating nav */
+.landing .nav-progress {
+  position: absolute;
+  top: 0;
+  inset-inline: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--l-accent), transparent);
+  transform: scaleX(var(--sp, 0));
+  transform-origin: 100% 50%;
+  opacity: .85;
+}
+html[data-theme="light"] .landing .nav-progress { background: linear-gradient(90deg, transparent, #202327, transparent); }
+.landing .brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding-inline-start: 4px;
+  font-weight: 700;
+}
+.landing .brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--l-raised);
+  border: 1px solid var(--l-line-2);
+  color: var(--silver);
+  box-shadow: none;
+  flex: none;
+}
+.landing .brand-mark svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.landing .brand b { font-size: 16px; font-weight: 800; }
+.landing .nav-links { position: relative; display: flex; gap: 4px; margin-inline-start: 12px; }
+.landing .nav-pill {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--ink) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 7%, transparent);
+  opacity: 1;
+  pointer-events: none;
+}
+.landing .nav-links.is-placed .nav-pill {
+  transition: left 430ms var(--l-ease), width 430ms var(--l-ease), opacity 280ms ease;
+}
+.landing.is-top .nav-pill { opacity: 0; }
+.landing .nav-links a {
+  position: relative;
+  z-index: 1;
+  padding: 8px 14px;
+  border-radius: 11px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 200ms ease;
+}
+.landing .nav-links a:hover,
+.landing .nav-links a[aria-current="true"] { color: var(--ink); }
+.landing .nav-end { display: flex; align-items: center; gap: 8px; margin-inline-start: auto; }
+
+/* ---------- hero ---------- */
+.landing .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: 48px;
+  align-items: center;
+  padding-block: clamp(48px, 8vw, 96px) clamp(40px, 6vw, 72px);
+}
+.landing .eyebrow { color: var(--muted); font-size: 13px; font-weight: 700; margin: 0 0 14px; }
+.landing .hero h1 {
+  font-size: clamp(34px, 5.2vw, 58px);
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+.landing .hero h1 .w {
+  display: inline-block;
+  animation: wordRise 840ms var(--l-ease) both;
+  animation-delay: calc(var(--wi, 0) * 74ms + 110ms);
+}
+.landing .hero h1 .hl {
+  background: linear-gradient(100deg, var(--hl-a) 0%, var(--hl-b) 45%, var(--hl-a) 92%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: wordRise 840ms var(--l-ease) both, hlSheen 7s ease-in-out 1.4s infinite;
+  animation-delay: calc(var(--wi, 0) * 74ms + 110ms), 1.4s;
+}
+@keyframes wordRise {
+  from { opacity: 0; transform: translate3d(0, .34em, 0); filter: blur(9px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes hlSheen {
+  0%, 55%, 100% { background-position: 100% 50%; }
+  80% { background-position: 0% 50%; }
+}
+.landing .hero .lead {
+  max-width: 34em;
+  color: var(--ink-2);
+  font-size: clamp(15px, 1.6vw, 18px);
+  margin-bottom: 30px;
+}
+.landing .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.landing .fine { margin-top: 18px; color: var(--muted); font-size: 12.5px; }
+
+.landing .preview {
+  padding: 22px;
+  border-radius: 26px;
+  animation: previewGlow 9s ease-in-out 1.1s infinite;
+}
+/* the float and the glow are two separate tracks so neither blocks the
+   scroll parallax, which is applied with the independent `translate` property */
+.landing .hero-item {
+  translate: 0 clamp(-26px, calc(var(--sy, 0) * -.05px), 0px);
+  animation: landingIn 700ms var(--l-ease) both, cardFloat 9s ease-in-out 1.1s infinite;
+  animation-delay: calc(var(--i, 0) * 90ms + 80ms), 1.1s;
+  will-change: transform;
+}
+@keyframes cardFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -7px, 0); }
+}
+@keyframes previewGlow {
+  0%, 100% { box-shadow: var(--l-shadow), inset 0 1px 0 var(--l-glass-hi); }
+  50% { box-shadow: var(--l-shadow), 0 0 44px -12px rgba(212, 216, 222, .30), inset 0 1px 0 var(--l-glass-hi); }
+}
+html[data-theme="light"] .landing .preview { animation-name: previewGlowLight; }
+@keyframes previewGlowLight {
+  0%, 100% { box-shadow: var(--l-shadow), inset 0 1px 0 var(--l-glass-hi); }
+  50% { box-shadow: var(--l-shadow), 0 0 38px -12px rgba(30, 33, 38, .18), inset 0 1px 0 var(--l-glass-hi); }
+}
+.landing .preview-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.landing .preview-head h2 { font-size: 17px; font-weight: 800; }
+.landing .chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--l-raised);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.landing .sessions { display: grid; gap: 10px; }
+.landing .session {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--l-glass-line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+}
+.landing .session-tag {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--l-raised);
+  color: var(--silver);
+}
+.landing .session b { display: block; font-size: 14px; }
+.landing .session small { display: block; color: var(--muted); font-size: 12px; }
+.landing .session .dur { margin-inline-start: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
+.landing .preview-foot { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
+/* ---------- sections ---------- */
+.landing section { scroll-margin-top: 92px; }
+.landing .sec { padding-block: clamp(44px, 7vw, 84px); }
+.landing .sec-head { max-width: 640px; margin-bottom: 34px; }
+.landing .sec-head h2 {
+  font-size: clamp(24px, 3.4vw, 36px);
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.landing .sec-head p { color: var(--muted); }
+
+.landing .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.landing .step,
+.landing .feat,
+.landing .track,
+.landing .soon {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 24px;
+}
+.landing .step { display: block; }
+.landing .step-n {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--l-line-2);
+  background: transparent;
+  color: var(--silver);
+  font-weight: 800;
+  margin-bottom: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.landing .step h3,
+.landing .feat h3,
+.landing .track h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+.landing .step p,
+.landing .feat p,
+.landing .track p { color: var(--muted); font-size: 14px; }
+
+.landing .feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.landing .feat-ico {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--l-raised);
+  border: 1px solid var(--line);
+  color: var(--silver);
+  margin-bottom: 14px;
+}
+
+.landing .tracks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.landing .track-ico { font-size: 28px; line-height: 1; margin-bottom: 12px; }
+.landing .track-note { margin-top: 18px; color: var(--muted); font-size: 13px; }
+
+.landing .soon {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(115deg, var(--surface), var(--l-raised));
+}
+.landing .soon h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; line-height: 1.4; }
+.landing .soon ul { display: grid; gap: 12px; }
+.landing .soon li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-2); }
+.landing .soon li::before {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--silver);
+}
+
+.landing .cta {
+  text-align: center;
+  padding: clamp(36px, 6vw, 64px) 24px;
+  border-radius: 28px;
+  margin-block: clamp(24px, 5vw, 56px);
+}
+.landing .cta h2 {
+  font-size: clamp(24px, 3.6vw, 38px);
+  font-weight: 800;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.landing .cta p { color: var(--muted); margin-bottom: 24px; }
+.landing .cta .cta-row { justify-content: center; }
+
+.landing footer {
+  border-top: 1px solid var(--line);
+  padding-block: 26px 40px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.landing footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.landing footer nav { display: flex; gap: 18px; }
+.landing footer a:hover { color: var(--ink); }
+
+/* hero copy entrance: each line rises out of a soft blur, same rhythm as the
+   old page but a little richer */
+.landing .hero-in > * {
+  animation: landingIn 760ms var(--l-ease) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+}
+@keyframes landingIn {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); filter: blur(7px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .landing .feat,
+  .landing .step,
+  .landing .track,
+  .landing .session { transition: translate 280ms var(--l-ease), border-color 240ms ease, box-shadow 280ms ease; }
+  .landing .feat:hover,
+  .landing .step:hover,
+  .landing .track:hover {
+    translate: 0 -4px;
+    border-color: var(--l-line-2);
+    box-shadow: var(--spot-shadow);
+  }
+}
+
+/* ============================================================
+   Extra motion
+   ============================================================ */
+
+/* the cursor spotlight on the cards (two CSS vars, no re-render) */
+.landing .step,
+.landing .feat,
+.landing .track { position: relative; isolation: isolate; }
+.landing .step::after,
+.landing .feat::after,
+.landing .track::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 0%), var(--spot), transparent 72%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+.landing .step > *,
+.landing .feat > *,
+.landing .track > * { position: relative; z-index: 1; }
+@media (hover: hover) and (pointer: fine) {
+  .landing .step:hover::after,
+  .landing .feat:hover::after,
+  .landing .track:hover::after { opacity: 1; }
+}
+
+/* icons, step numbers and the section underline land with the card */
+.landing .step.reveal.in .step-n { animation: stepPop 640ms var(--l-ease) 170ms both; }
+.landing .feat.reveal.in .feat-ico,
+.landing .track.reveal.in .track-ico { animation: iconPop 700ms var(--l-ease) 150ms both; }
+.landing .feat:nth-child(2).reveal.in .feat-ico,
+.landing .track:nth-child(2).reveal.in .track-ico,
+.landing .step:nth-child(2).reveal.in .step-n { animation-delay: 240ms; }
+.landing .feat:nth-child(3).reveal.in .feat-ico,
+.landing .track:nth-child(3).reveal.in .track-ico,
+.landing .step:nth-child(3).reveal.in .step-n { animation-delay: 330ms; }
+.landing .feat:nth-child(4).reveal.in .feat-ico { animation-delay: 240ms; }
+.landing .feat:nth-child(5).reveal.in .feat-ico { animation-delay: 330ms; }
+.landing .feat:nth-child(6).reveal.in .feat-ico { animation-delay: 420ms; }
+@keyframes stepPop {
+  0% { opacity: 0; transform: scale(.55) rotate(-14deg); }
+  62% { opacity: 1; transform: scale(1.08) rotate(3deg); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes iconPop {
+  0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(.8); }
+  60% { opacity: 1; transform: translate3d(0, 0, 0) scale(1.06); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* a thin silver rule grows under every section title once it is in view */
+.landing .sec-head h2 { position: relative; }
+.landing .sec-head h2::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 1px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--silver), transparent);
+  transition: width 720ms var(--l-ease) 200ms;
+}
+.landing .sec-head.reveal.in h2::after { width: 74px; }
+
+/* the sample plan "breathes": one row lights up at a time */
+.landing .session {
+  position: relative;
+  overflow: hidden;
+  animation: sessionIn 560ms var(--l-ease) both;
+  animation-delay: calc(var(--si, 0) * 90ms + 380ms);
+}
+@keyframes sessionIn {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.landing .session::before {
+  content: "";
+  position: absolute;
+  inset-block: 12px;
+  inset-inline-start: 1px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, transparent, var(--silver), transparent);
+  opacity: .14;
+  animation: sessionGlow 7.2s ease-in-out infinite;
+  animation-delay: calc(var(--si, 0) * 2.4s + 1.5s);
+}
+@keyframes sessionGlow {
+  0%, 74%, 100% { opacity: .14; }
+  10%, 26% { opacity: .62; }
+}
+
+/* reveal gets a gentle focus pull on the landing only */
+html.motion-ready .landing .reveal {
+  filter: blur(4px);
+  transform: translate3d(0, var(--ry, 22px), 0) scale(.992);
+  transition:
+    opacity var(--m-reveal) var(--l-ease) var(--d, 0ms),
+    transform 700ms var(--l-ease) var(--d, 0ms),
+    filter 520ms var(--l-ease) var(--d, 0ms),
+    border-color 240ms ease;
+  /* the blur is the expensive part: keep it small and short, and never keep a
+     layer alive after the reveal finishes */
+}
+html.motion-ready .landing .reveal.in { filter: none; transform: none; will-change: auto; }
+
+/* ---------- reduced motion: keep every word visible, stop the loops ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion-full) .landing .ambient span,
+  html:not(.motion-full) .landing .hero-item,
+  html:not(.motion-full) .landing .session,
+  html:not(.motion-full) .landing .session::before,
+  html:not(.motion-full) .landing .hero h1 .w,
+  html:not(.motion-full) .landing .hero-in > *,
+  html:not(.motion-full) .landing .step.reveal.in .step-n,
+  html:not(.motion-full) .landing .feat.reveal.in .feat-ico,
+  html:not(.motion-full) .landing .track.reveal.in .track-ico,
+  html:not(.motion-full) .landing .btn-primary::after,
+  html:not(.motion-full) .landing .preview {
+    animation: none !important;
+  }
+  html:not(.motion-full) .landing .hero-item,
+  html:not(.motion-full) .landing .ambient span { translate: none !important; }
+  html:not(.motion-full) .landing .hero h1 .w,
+  html:not(.motion-full) .landing .hero-in > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  html:not(.motion-full) .landing .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  html:not(.motion-full) .landing .sec-head h2::after { transition: none; }
+}
+
+/* ---------- icon-only theme button (landing + auth) ---------- */
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background-color .2s ease, scale 160ms cubic-bezier(.22, 1, .36, 1);
+}
+.theme-btn:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.theme-btn:active { scale: .92; }
+
+/* the landing's «حركة كاملة / حركة مخففة» switch, same look as the app topbar */
+.landing .motion-toggle {
+  height: 40px;
+  min-width: 40px;
+  justify-content: center;
+  border-radius: 12px;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+.landing .motion-toggle:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+
+.theme-btn .ico {
+  width: 18px;
+  height: 18px;
+  grid-area: 1 / 1;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity .3s ease, rotate 560ms cubic-bezier(.22, 1, .36, 1), scale 560ms cubic-bezier(.22, 1, .36, 1);
+}
+.theme-btn .i-sun { opacity: 0; rotate: -90deg; scale: .5; }
+html[data-theme="dark"] .theme-btn .i-sun { opacity: 1; rotate: 0deg; scale: 1; }
+html[data-theme="dark"] .theme-btn .i-moon { opacity: 0; rotate: 90deg; scale: .5; }
+
+/* ---------- auth screen (old tabbed card) ---------- */
+.auth-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 14px 40px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.auth-page .auth-top {
+  width: min(440px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 8px 18px;
+  position: relative;
+  z-index: 1;
+}
+.auth-page .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.auth-page .back:hover { color: var(--ink); }
+.auth-page .auth-card {
+  width: min(440px, 100%);
+  display: block;
+  padding: 28px;
+  border-radius: 28px;
+  position: relative;
+  z-index: 1;
+}
+.auth-page .auth-card h1 { font-size: 24px; font-weight: 800; margin: 0 0 4px; }
+.auth-page .auth-card .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 20px; }
+
+.auth-page .tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  margin-bottom: 22px;
+  border-radius: 14px;
+  background: var(--surface-3);
+  border: 1px solid var(--line);
+}
+.auth-page .tab-ind {
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: 4px;
+  width: calc(50% - 4px);
+  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  transition: translate 420ms cubic-bezier(.22, 1, .36, 1);
+}
+.auth-page .tabs[data-active="signup"] .tab-ind { translate: -100% 0; }
+.auth-page .tab {
+  position: relative;
+  z-index: 1;
+  height: 38px;
+  border: 0;
+  background: transparent;
+  border-radius: 10px;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 800;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+.auth-page .tab[aria-selected="true"] { color: var(--ink); }
+
+.auth-page .pane { animation: paneIn 460ms cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes paneIn {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.auth-page .field { display: grid; gap: 6px; margin-bottom: 14px; }
+.auth-page .field > span { font-size: 13px; font-weight: 800; color: var(--ink-2); }
+.auth-page .field > span small { font-weight: 600; color: var(--muted); }
+.auth-page .field input {
+  width: 100%;
+  height: 46px;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  color: var(--ink);
+  font: inherit;
+  outline: 0;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.auth-page .field input[dir="ltr"] { text-align: left; }
+.auth-page .field input:focus {
+  border-color: var(--silver);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--silver) 22%, transparent);
+}
+.auth-page .pw { position: relative; }
+.auth-page .pw input { padding-inline-end: 46px; }
+.auth-page .eye {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 4px;
+  width: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.auth-page .eye:hover { color: var(--ink); }
+.auth-page .eye .ico {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.auth-page .err { margin: 0 0 12px; color: var(--err); font-size: 12.5px; }
+.auth-page .auth-card .btn { width: 100%; margin-top: 6px; }
+.auth-page .switch { margin: 16px 0 0; text-align: center; color: var(--muted); font-size: 13px; }
+.auth-page .switch a { color: var(--ink); font-weight: 700; text-decoration: none; }
+.auth-page .switch a:hover { text-decoration: underline; }
+html[data-theme="light"] .auth-page .tabs { background: var(--surface-2); }
+
+/* ---------- responsive ---------- */
+/* The motion switch costs ~104px, which the section links need below this
+   width: keep it icon-only there so the nav never wraps onto two lines. */
+@media (max-width: 1024px) {
+  .landing .motion-toggle .theme-text { display: none; }
+  .landing .motion-toggle { padding-inline: 11px; }
+  /* Even icon-only, the switch leaves the 901–920px band with only ~25px to
+     spare, which a wider Arabic fallback font can eat. Tighten the nav's own
+     padding and gaps by ~30px here so the section links keep one row all the
+     way down to the 900px cutoff that hides them. */
+  .landing .nav { gap: 14px; }
+  .landing .nav-links { margin-inline-start: 8px; }
+  .landing .nav-links a { padding-inline: 12px; }
+  .landing .nav-end { gap: 7px; }
+}
+@media (max-width: 900px) {
+  .landing .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .landing .steps,
+  .landing .feats,
+  .landing .tracks { grid-template-columns: minmax(0, 1fr); }
+  .landing .soon { grid-template-columns: minmax(0, 1fr); }
+  .landing .nav-links { display: none; }
+  .landing .glass { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+}
+@media (min-width: 640px) and (max-width: 900px) {
+  .landing .feats,
+  .landing .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .landing .nav { gap: 8px; padding-inline: 8px; }
+  .landing .brand b { display: none; }
+  .landing .btn-hide-sm { display: none; }
+  .landing .cta-row .btn { flex: 1 1 100%; }
+  .landing .session { padding: 12px; gap: 10px; }
+  .auth-page .auth-card { padding: 22px 18px; }
+}
+
+/* ============================================================
+   Identity pass — logo, plan sheet, editorial grid
+   Replaces the glass / bloom / emoji grammar with hairlines,
+   real rules and a typographic hierarchy.
+   ============================================================ */
+
+.landing {
+  --wrap: 1340px;
+  --gutter: clamp(32px, 5vw, 96px);
+  --hair: color-mix(in srgb, var(--line) 90%, transparent);
+  font-size: 16px;
+}
+
+/* the content column follows the screen instead of sitting in a small box */
+.landing .wrap { width: min(var(--wrap), calc(100% - var(--gutter))); }
+
+/* ---------- nav: a solid bar with a hairline, not a floating glass pill ---------- */
+.landing .nav {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  padding: 7px 9px 7px 11px;
+}
+.landing.is-scrolled .nav {
+  background: var(--bg);
+  border-color: var(--line-strong);
+  box-shadow: none;
+}
+.landing .nav-progress {
+  inset-inline: 0;
+  height: 1px;
+  border-radius: 0;
+  background: var(--silver);
+  opacity: .85;
+}
+html[data-theme="light"] .landing .nav-progress { background: #17191C; opacity: .55; }
+
+.landing .brand { gap: 11px; padding-inline-start: 2px; }
+.landing .brand-mark {
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--ink);
+}
+.landing .brand b { font-size: 18px; font-weight: 900; }
+.landing .nav-links a { font-size: 14px; padding: 9px 15px; }
+
+/* ---------- buttons: square-ish, no shine sweep ---------- */
+.landing .btn { border-radius: 8px; height: 46px; padding: 0 22px; font-size: 14.5px; }
+.landing .btn-sm { border-radius: 7px; height: 38px; padding: 0 15px; font-size: 13.5px; }
+.landing .btn-primary::after { display: none; }
+.landing .btn-primary:hover { translate: 0 -1px; }
+
+/* ---------- hero ---------- */
+.landing .hero {
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr);
+  gap: clamp(32px, 4vw, 72px);
+  align-items: center;
+  padding-block: clamp(48px, 5.5vw, 96px) clamp(44px, 5vw, 80px);
+}
+.landing .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+.landing .eyebrow::before {
+  content: "";
+  flex: none;
+  width: 30px;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.landing .hero h1 {
+  font-size: clamp(38px, 3.9vw, 66px);
+  font-weight: 800;
+  line-height: 1.24;
+  margin-bottom: 22px;
+}
+.landing .hero h1 .w {
+  animation: heroWord 880ms var(--l-ease) both;
+  animation-delay: calc(var(--wi, 0) * 58ms + 60ms);
+}
+@keyframes heroWord {
+  from { clip-path: inset(0 0 104% 0); transform: translate3d(0, .16em, 0); }
+  to { clip-path: inset(-38% -14% -38% -14%); transform: none; }
+}
+.landing .hero h1 .hl {
+  position: relative;
+  background: none;
+  color: var(--ink);
+  -webkit-text-fill-color: currentColor;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  animation: heroWord 880ms var(--l-ease) both;
+  animation-delay: calc(var(--wi, 0) * 58ms + 60ms);
+}
+/* the emphasis is a silver rule that draws itself under the word */
+.landing .hero h1 .hl::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-inline: -3px;
+  bottom: -.08em;
+  height: .075em;
+  background: var(--silver);
+  opacity: .32;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  animation: hlDraw 760ms var(--l-ease) 620ms both;
+}
+@keyframes hlDraw { to { transform: scaleX(1); } }
+
+.landing .hero .lead {
+  max-width: 33em;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.85;
+  margin-bottom: 30px;
+}
+.landing .fine { max-width: 36em; font-size: 13px; line-height: 1.9; }
+
+/* ---------- the sheet: a plan document, not a glowing glass card ---------- */
+.landing .hero-item {
+  translate: none;
+  animation: sheetIn 760ms var(--l-ease) 220ms both;
+  will-change: auto;
+}
+@keyframes sheetIn {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.landing .plan-sheet {
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.landing .sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+}
+.landing .sheet-kicker { font-size: 15px; font-weight: 800; }
+.landing .sheet-tag {
+  padding: 2px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.landing .sheet-rows { display: block; }
+.landing .sheet-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  animation: rowIn 520ms var(--l-ease) both;
+  animation-delay: calc(var(--si, 0) * 70ms + 460ms);
+}
+@keyframes rowIn {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.landing .row-n {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.landing .row-body b { display: block; font-size: 15px; font-weight: 700; }
+.landing .row-body small { display: block; color: var(--muted); font-size: 12.5px; }
+.landing .row-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.landing .sheet-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  background: color-mix(in srgb, var(--ink) 3%, transparent);
+}
+.landing .sheet-rule { flex: none; width: 22px; height: 1px; background: var(--line-strong); }
+.landing .sheet-foot p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+
+/* ---------- how it works: a band of three cells ---------- */
+.landing .steps {
+  gap: 0;
+  border-block: 1px solid var(--line);
+}
+.landing .step {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  padding: 28px 26px;
+}
+.landing .steps .step:first-child { padding-inline-start: 0; }
+.landing .step + .step { border-inline-start: 1px solid var(--hair); }
+.landing .step-n {
+  display: block;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--silver);
+  font-size: 12.5px;
+  font-weight: 800;
+  margin-bottom: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- features: numbered rows, no icon chips ---------- */
+.landing .feats {
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.landing .feat {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+  border-inline-start: 1px solid var(--hair);
+  background: none;
+  padding: 26px;
+}
+.landing .feats .feat:nth-child(3n + 1) {
+  border-inline-start: 0;
+  padding-inline-start: 0;
+}
+.landing .feats .feat:nth-child(3n) { padding-inline-end: 0; }
+.landing .feat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+.landing .feat-idx {
+  color: var(--silver);
+  font-size: 12.5px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.landing .feat-top svg { opacity: .55; }
+
+/* ---------- tracks: a letter in a rule box ---------- */
+.landing .tracks { gap: 18px; }
+/* app.css uses `.track` for the thin progress bar, so the card has to undo
+   its height/overflow or every track card collapses to 8px and clips its text */
+.landing .track {
+  height: auto;
+  overflow: visible;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: none;
+  padding: 26px;
+}
+.landing .track-ico {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--silver);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ---------- soon + closing panel: flat ---------- */
+.landing .soon {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: none;
+  padding: clamp(24px, 3vw, 36px);
+}
+.landing .soon-head { display: grid; gap: 10px; align-content: center; }
+.landing .soon-lead {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+.landing .soon li::before {
+  width: 6px;
+  height: 6px;
+  margin-top: 12px;
+  border: 1px solid var(--silver);
+  border-radius: 0;
+}
+.landing .cta {
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: none;
+}
+
+/* the body scale: the landing reads at 16px, not at caption size */
+.landing .sec-head h2 { font-size: clamp(26px, 2.6vw, 40px); }
+.landing .sec-head p { font-size: 16px; }
+.landing .step h3,
+.landing .feat h3,
+.landing .track h3 { font-size: 19px; margin-bottom: 8px; }
+.landing .step p,
+.landing .feat p,
+.landing .track p { font-size: 15px; line-height: 1.85; }
+.landing .track-note { font-size: 14px; }
+.landing .soon li { font-size: 16px; }
+.landing .cta p { font-size: 16px; }
+.landing footer { font-size: 13.5px; }
+
+/* no cursor spotlight: hover is a flat tint and the border, nothing glows */
+.landing .step::after,
+.landing .feat::after,
+.landing .track::after { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .landing .step,
+  .landing .feat,
+  .landing .track { transition: background-color 200ms ease, border-color 200ms ease; }
+  .landing .step:hover,
+  .landing .feat:hover,
+  .landing .track:hover {
+    translate: none;
+    box-shadow: none;
+    background: color-mix(in srgb, var(--ink) 3%, transparent);
+  }
+}
+
+/* ---------- responsive for the new layout ---------- */
+@media (max-width: 900px) {
+  .landing .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+  .landing .steps,
+  .landing .feats,
+  .landing .tracks,
+  .landing .soon { grid-template-columns: minmax(0, 1fr); }
+  .landing .step,
+  .landing .step + .step {
+    border-inline-start: 0;
+    border-top: 1px solid var(--hair);
+    padding-inline: 0;
+  }
+  .landing .steps .step:first-child { border-top: 0; }
+  .landing .feat,
+  .landing .feats .feat:nth-child(3n + 1) {
+    border-inline-start: 0;
+    padding-inline: 0;
+  }
+}
+@media (min-width: 640px) and (max-width: 900px) {
+  .landing .feats,
+  .landing .tracks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .landing .feats .feat { padding-inline: 22px; }
+  .landing .feats .feat:nth-child(odd) { border-inline-start: 0; padding-inline-start: 0; }
+  .landing .feats .feat:nth-child(even) { border-inline-start: 1px solid var(--hair); padding-inline-end: 0; }
+}
+@media (max-width: 480px) {
+  .landing .sheet-row { grid-template-columns: 24px minmax(0, 1fr); padding-inline: 16px; }
+  .landing .row-meta { display: none; }
+  .landing .step h3,
+  .landing .feat h3,
+  .landing .track h3 { font-size: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.motion-full) .landing .hero h1 .w,
+  html:not(.motion-full) .landing .hero h1 .hl,
+  html:not(.motion-full) .landing .hero-item,
+  html:not(.motion-full) .landing .sheet-row {
+    animation: none !important;
+    clip-path: none !important;
+  }
+  html:not(.motion-full) .landing .hero h1 .hl::after {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Mobile pass (≤900px / ≤480px) — nav rows, brand, spacing
+   ============================================================ */
+@media (max-width: 900px) {
+  .landing .nav {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 8px 9px;
+    row-gap: 0;
+  }
+  .landing .brand { order: 1; }
+  .landing .nav-end { order: 2; margin-inline-start: auto; }
+  /* the section links get their own scrollable row instead of disappearing */
+  .landing .nav-links {
+    display: flex;
+    order: 3;
+    flex: 1 1 100%;
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 6px 0 0;
+    gap: 2px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    border-top: 1px solid var(--line);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .landing .nav-links::-webkit-scrollbar { display: none; }
+  .landing .nav-links a { padding: 7px 11px; font-size: 13px; }
+  .landing .nav-progress { display: none; }
+}
+
+@media (max-width: 480px) {
+  /* keep the wordmark: without it the bar is a lone mark and a button */
+  .landing .brand b { display: block; font-size: 16px; }
+  .landing .brand { gap: 8px; }
+  .landing .nav-end { gap: 6px; }
+  .landing .theme-toggle.motion-toggle,
+  .landing .theme-btn { width: 36px; height: 36px; }
+  .landing .btn-sm { height: 36px; padding: 0 13px; font-size: 13px; }
+}
+
+@media (max-width: 360px) {
+  .landing .brand b { display: none; }
+}

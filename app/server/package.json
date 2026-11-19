@@ -1,0 +1,13 @@
+{
+  "name": "lam-almotarakem-server",
+  "version": "0.2.0",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node src/server.js",
+    "seed": "node scripts/seed.js",
+    "test": "node --test test/*.test.js",
+    "demo": "node examples/demo.js"
+  },
+  "dependencies": { "pg": "^8.11.0" }
+}

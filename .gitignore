@@ -1,0 +1,36 @@
+# ---- dependencies ----
+node_modules/
+
+# ---- build output ----
+dist/
+dist-ssr/
+.vite/
+
+# ---- env / secrets ----
+.env
+.env.*
+!.env.example
+
+# ---- heavy local assets (مش جزء من كود المشروع) ----
+*.zip
+*.pdf
+_extract/
+_tools/
+.backups/
+_shots/
+.cloud-attachments/
+.agents/
+.freebuff/
+New folder/
+mobile-*.png
+skills-lock.json
+
+# ---- دامبات من أدوات تانية ----
+/lam.md
+/thread-*.md
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

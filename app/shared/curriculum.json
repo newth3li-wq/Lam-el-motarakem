@@ -1,0 +1,554 @@
+{
+  "version": 1,
+  "source": "الفهارس الرسمية لكتب الصف الثالث الثانوي — وزارة التربية والتعليم",
+  "note": "العناوين والأرقام منقولة من فهرس كل كتاب، مفيش دروس مخترعة، الوقت المقدّر بيتحسب من فرق الصفحات",
+  "subjects": [
+    {
+      "id": "arabic",
+      "name": "اللغة العربية",
+      "short": "العربي",
+      "tracks": [],
+      "book": "Arabic_language_Sec3.pdf",
+      "units": [
+        {
+          "id": "ar-reading",
+          "title": "القراءة العربية",
+          "lessons": [
+            { "id": "ar-reading-1", "title": "إرادة التغيير", "page": 2 },
+            { "id": "ar-reading-2", "title": "أبو الريحان البيروني", "page": 9 },
+            { "id": "ar-reading-3", "title": "القدس مدينة عربية إسلامية", "page": 14 },
+            { "id": "ar-reading-4", "title": "العلم في الإسلام", "page": 19 },
+            { "id": "ar-reading-5", "title": "قيم إنسانية", "page": 22 }
+          ]
+        },
+        {
+          "id": "ar-poetry",
+          "title": "الأدب والنصوص: الشعر ومدارسه",
+          "lessons": [
+            { "id": "ar-poetry-1", "title": "مدرسة الإحياء والبعث وجيل التطوير", "page": 29 },
+            { "id": "ar-poetry-2", "title": "غربة وحنين — أحمد شوقي", "page": 34 },
+            { "id": "ar-poetry-3", "title": "الاتجاه الوجداني — المساء لخليل مطران", "page": 42 },
+            { "id": "ar-poetry-4", "title": "مدرسة الديوان — في رثاء مي للعقاد", "page": 53 },
+            { "id": "ar-poetry-5", "title": "مدرسة أبولو — أهواك يا وطني", "page": 64 },
+            { "id": "ar-poetry-6", "title": "مدرسة المهاجر — من أنت يا نفسي", "page": 78 },
+            { "id": "ar-poetry-7", "title": "الواقعية والشعر الجديد", "page": 92 }
+          ]
+        },
+        {
+          "id": "ar-prose",
+          "title": "الأدب والنصوص: النثر وفنونه",
+          "lessons": [
+            { "id": "ar-prose-1", "title": "المقال", "page": 111 },
+            { "id": "ar-prose-2", "title": "الرواية", "page": 120 },
+            { "id": "ar-prose-3", "title": "القصة القصيرة — الكنيسة نورت", "page": 121 },
+            { "id": "ar-prose-4", "title": "المسرحية", "page": 130 }
+          ]
+        },
+        {
+          "id": "ar-rhetoric",
+          "title": "البلاغة: مفاهيم نقدية",
+          "lessons": [
+            { "id": "ar-rhetoric-1", "title": "التجربة الشعرية", "page": 138 },
+            { "id": "ar-rhetoric-2", "title": "الوحدة الفنية", "page": 141 }
+          ]
+        },
+        {
+          "id": "ar-grammar",
+          "title": "التدريبات اللغوية",
+          "lessons": [
+            { "id": "ar-grammar-1", "title": "الوحدة الأولى: النطق والإملاء", "page": 145 },
+            { "id": "ar-grammar-2", "title": "الوحدة الثانية: الأبنية", "page": 152 },
+            { "id": "ar-grammar-3", "title": "الوحدة الثالثة: النواسخ", "page": 164 },
+            { "id": "ar-grammar-4", "title": "الوحدة الرابعة: في إعراب الاسم", "page": 172 },
+            { "id": "ar-grammar-5", "title": "الوحدة الخامسة: في إعراب الفعل", "page": 182 },
+            { "id": "ar-grammar-6", "title": "الوحدة السادسة: الأدوات", "page": 190 },
+            { "id": "ar-grammar-7", "title": "الوحدة السابعة: الممنوع من الصرف", "page": 198 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "name": "اللغة الإنجليزية",
+      "short": "الإنجليزي",
+      "tracks": [],
+      "book": "English_language_Sec3_tr1.pdf",
+      "units": [
+        {
+          "id": "en-book",
+          "title": "Student's Book",
+          "lessons": [
+            { "id": "en-1", "title": "Unit 1 — Inside the World of Care", "page": 12 },
+            { "id": "en-2", "title": "Unit 2 — The Power of Machines", "page": 24 },
+            { "id": "en-3", "title": "Unit 3 — Protect Nature, Protect Future", "page": 36 },
+            { "id": "en-r1", "title": "Review 1", "page": 47 },
+            { "id": "en-4", "title": "Unit 4 — Marine Life", "page": 55 },
+            { "id": "en-5", "title": "Unit 5 — From Muscles to Mindset", "page": 68 },
+            { "id": "en-6", "title": "Unit 6 — Let's Hang Out!", "page": 82 },
+            { "id": "en-r2", "title": "Review 2", "page": 96 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history",
+      "name": "التاريخ",
+      "short": "التاريخ",
+      "tracks": ["literary"],
+      "book": "History_Sec3.pdf",
+      "units": [
+        {
+          "id": "history-book",
+          "title": "فصول الكتاب",
+          "lessons": [
+            { "id": "history-1", "title": "الحملة الفرنسية على مصر والشام", "page": 1 },
+            { "id": "history-2", "title": "بناء الدولة الحديثة", "page": 13 },
+            { "id": "history-3", "title": "الثورة العربية الكبرى", "page": 43 },
+            { "id": "history-4", "title": "مصر بعد الحرب العالمية الأولى", "page": 67 },
+            { "id": "history-5", "title": "التوسع الاستعماري في الوطن العربي", "page": 89 },
+            { "id": "history-6", "title": "الوطن العربي تحت الحكم العثماني", "page": 100 },
+            { "id": "history-7", "title": "قضايا العالم العربي المعاصر", "page": 108 },
+            { "id": "history-8", "title": "ثورات 2011 و2013", "page": 140 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geography",
+      "name": "الجغرافيا",
+      "short": "الجغرافيا",
+      "tracks": ["literary"],
+      "book": "Geography_Sec3.pdf",
+      "units": [
+        {
+          "id": "geo-intro",
+          "title": "المدخل",
+          "lessons": [
+            { "id": "geo-0", "title": "مدخل لدراسة الجغرافيا السياسية", "page": 6 }
+          ]
+        },
+        {
+          "id": "geo-u1",
+          "title": "الوحدة الأولى: الجغرافيا السياسية",
+          "lessons": [
+            { "id": "geo-1-1", "title": "الدولة: تعريفها وأهم أنواعها", "page": 12 },
+            { "id": "geo-1-2", "title": "المقومات الطبيعية لقوة الدولة", "page": 18 },
+            { "id": "geo-1-3", "title": "المقومات البشرية لقوة الدولة", "page": 31 },
+            { "id": "geo-1-4", "title": "النظام السياسي والاتحادي للدولة", "page": 39 }
+          ]
+        },
+        {
+          "id": "geo-u2",
+          "title": "الوحدة الثانية: المشكلات السياسية",
+          "lessons": [
+            { "id": "geo-2-1", "title": "الحدود السياسية: مفهومها وأهميتها ووظائفها", "page": 44 },
+            { "id": "geo-2-2", "title": "أنواع الحدود السياسية", "page": 51 },
+            { "id": "geo-2-3", "title": "تطور خريطة العالم السياسية والمشكلات المرتبطة بها", "page": 60 },
+            { "id": "geo-2-4", "title": "مشكلات اقتصادية ذات بعد سياسي", "page": 70 },
+            { "id": "geo-2-5", "title": "مشكلات اجتماعية ذات بعد سياسي", "page": 74 }
+          ]
+        },
+        {
+          "id": "geo-u3",
+          "title": "الوحدة الثالثة: التكتلات الاقتصادية والأحلاف العسكرية",
+          "lessons": [
+            { "id": "geo-3-1", "title": "التكتلات الاقتصادية", "page": 83 },
+            { "id": "geo-3-2", "title": "الأحلاف العسكرية", "page": 97 }
+          ]
+        },
+        {
+          "id": "geo-u4",
+          "title": "الوحدة الرابعة: العلاقات الدولية والنظام الدولي الجديد",
+          "lessons": [
+            { "id": "geo-4-1", "title": "ماهية العلاقات الدولية", "page": 104 },
+            { "id": "geo-4-2", "title": "النظام العالمي الجديد", "page": 109 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statistics",
+      "name": "الإحصاء",
+      "short": "الإحصاء",
+      "tracks": ["literary"],
+      "book": "Statistics_Arabic_Sec3.pdf",
+      "units": [
+        {
+          "id": "stat-u1",
+          "title": "الوحدة الأولى: الارتباط والانحدار",
+          "lessons": [
+            { "id": "stat-1-1", "title": "الارتباط", "page": 4 },
+            { "id": "stat-1-2", "title": "الانحدار", "page": 16 }
+          ]
+        },
+        {
+          "id": "stat-u2",
+          "title": "الوحدة الثانية: مقاييس متقدمة في الإحصاء",
+          "lessons": [
+            { "id": "stat-2-1", "title": "عرض وتمثيل البيانات باستخدام طريقة «الساق والأوراق»", "page": 28 },
+            { "id": "stat-2-2", "title": "الربيعيات وتعديلها بيانيًا", "page": 34 },
+            { "id": "stat-2-3", "title": "نصف المدى الربيعي", "page": 44 }
+          ]
+        },
+        {
+          "id": "stat-u3",
+          "title": "الوحدة الثالثة: الاحتمال",
+          "lessons": [
+            { "id": "stat-3-1", "title": "حساب الاحتمال", "page": 50 },
+            { "id": "stat-3-2", "title": "الاحتمال الشرطي", "page": 68 },
+            { "id": "stat-3-3", "title": "الأحداث المستقلة", "page": 77 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physics_science",
+      "name": "الفيزياء",
+      "short": "الفيزياء",
+      "tracks": ["science"],
+      "book": "Physics_Arabic_Sec3.pdf",
+      "units": [
+        {
+          "id": "phy-u1",
+          "title": "الوحدة الأولى: الكهرباء والمغناطيسية",
+          "lessons": [
+            { "id": "phy-1-1", "title": "التيار الكهربي وقانون أوم", "page": 2 },
+            { "id": "phy-1-2", "title": "التأثير المغناطيسي للتيار الكهربي", "page": 25 },
+            { "id": "phy-1-3", "title": "الحث الكهرومغناطيسي", "page": 54 },
+            { "id": "phy-1-4", "title": "دوائر التيار المتردد", "page": 90 }
+          ]
+        },
+        {
+          "id": "phy-u2",
+          "title": "الوحدة الثانية: الفيزياء الحديثة",
+          "lessons": [
+            { "id": "phy-2-1", "title": "ازدواجية الموجة والجسيم", "page": 107 },
+            { "id": "phy-2-2", "title": "الأطياف الذرية", "page": 121 },
+            { "id": "phy-2-3", "title": "الليزر", "page": 134 },
+            { "id": "phy-2-4", "title": "الإلكترونيات الحديثة", "page": 154 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physics_math",
+      "name": "الفيزياء",
+      "short": "الفيزياء",
+      "tracks": ["math"],
+      "book": "Physics_Arabic_Sec3.pdf",
+      "units": [
+        {
+          "id": "phy-m-u1",
+          "title": "الوحدة الأولى: الكهرباء والمغناطيسية",
+          "lessons": [
+            { "id": "phy-m-1-1", "title": "التيار الكهربي وقانون أوم", "page": 2 },
+            { "id": "phy-m-1-2", "title": "التأثير المغناطيسي للتيار الكهربي", "page": 25 },
+            { "id": "phy-m-1-3", "title": "الحث الكهرومغناطيسي", "page": 54 },
+            { "id": "phy-m-1-4", "title": "دوائر التيار المتردد", "page": 90 }
+          ]
+        },
+        {
+          "id": "phy-m-u2",
+          "title": "الوحدة الثانية: الفيزياء الحديثة",
+          "lessons": [
+            { "id": "phy-m-2-1", "title": "ازدواجية الموجة والجسيم", "page": 107 },
+            { "id": "phy-m-2-2", "title": "الأطياف الذرية", "page": 121 },
+            { "id": "phy-m-2-3", "title": "الليزر", "page": 134 },
+            { "id": "phy-m-2-4", "title": "الإلكترونيات الحديثة", "page": 154 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chemistry_science",
+      "name": "الكيمياء",
+      "short": "الكيمياء",
+      "tracks": ["science"],
+      "book": "Chemistry_Arabic_Sec3.pdf",
+      "units": [
+        {
+          "id": "chem-u1",
+          "title": "الباب الأول: العناصر الانتقالية",
+          "lessons": [{ "id": "chem-s-1", "title": "العناصر الانتقالية", "page": 1 }]
+        },
+        {
+          "id": "chem-u2",
+          "title": "الباب الثاني: التحليل الكيميائي",
+          "lessons": [{ "id": "chem-s-2", "title": "التحليل الكيميائي", "page": 24 }]
+        },
+        {
+          "id": "chem-u3",
+          "title": "الباب الثالث: الاتزان الكيميائي",
+          "lessons": [{ "id": "chem-s-3", "title": "الاتزان الكيميائي", "page": 44 }]
+        },
+        {
+          "id": "chem-u4",
+          "title": "الباب الرابع: الكيمياء الكهربية",
+          "lessons": [{ "id": "chem-s-4", "title": "الكيمياء الكهربية", "page": 73 }]
+        },
+        {
+          "id": "chem-u5",
+          "title": "الباب الخامس: الكيمياء العضوية",
+          "lessons": [{ "id": "chem-s-5", "title": "الكيمياء العضوية", "page": 103 }]
+        }
+      ]
+    },
+    {
+      "id": "chemistry_math",
+      "name": "الكيمياء",
+      "short": "الكيمياء",
+      "tracks": ["math"],
+      "book": "Chemistry_Arabic_Sec3.pdf",
+      "units": [
+        {
+          "id": "chem-m-u1",
+          "title": "الباب الأول: العناصر الانتقالية",
+          "lessons": [{ "id": "chem-m-1", "title": "العناصر الانتقالية", "page": 1 }]
+        },
+        {
+          "id": "chem-m-u2",
+          "title": "الباب الثاني: التحليل الكيميائي",
+          "lessons": [{ "id": "chem-m-2", "title": "التحليل الكيميائي", "page": 24 }]
+        },
+        {
+          "id": "chem-m-u3",
+          "title": "الباب الثالث: الاتزان الكيميائي",
+          "lessons": [{ "id": "chem-m-3", "title": "الاتزان الكيميائي", "page": 44 }]
+        },
+        {
+          "id": "chem-m-u4",
+          "title": "الباب الرابع: الكيمياء الكهربية",
+          "lessons": [{ "id": "chem-m-4", "title": "الكيمياء الكهربية", "page": 73 }]
+        },
+        {
+          "id": "chem-m-u5",
+          "title": "الباب الخامس: الكيمياء العضوية",
+          "lessons": [{ "id": "chem-m-5", "title": "الكيمياء العضوية", "page": 103 }]
+        }
+      ]
+    },
+    {
+      "id": "pure_math",
+      "name": "الرياضيات البحتة",
+      "short": "بحتة",
+      "tracks": ["math"],
+      "book": "pure_Mathematics_ARABIC_Sec3.pdf",
+      "units": [
+        {
+          "id": "pm-algebra-1",
+          "title": "الجبر: الوحدة الأولى — نظرية ذات الحدين",
+          "lessons": [
+            { "id": "pm-1-1", "title": "نظرية ذات الحدين بأس صحيح موجب", "page": 4 },
+            { "id": "pm-1-2", "title": "إيجاد الحد المشتمل على س من مفكوك ذات الحدين", "page": 13 },
+            { "id": "pm-1-3", "title": "النسبة بين حدين متتاليين من مفكوك ذات الحدين", "page": 18 }
+          ]
+        },
+        {
+          "id": "pm-algebra-2",
+          "title": "الجبر: الوحدة الثانية — الأعداد المركبة",
+          "lessons": [
+            { "id": "pm-2-1", "title": "الصورة المثلثية للعدد المركب", "page": 24 },
+            { "id": "pm-2-2", "title": "نظرية ديموافر", "page": 36 },
+            { "id": "pm-2-3", "title": "الجذور التكعيبية للواحد الصحيح", "page": 41 }
+          ]
+        },
+        {
+          "id": "pm-algebra-3",
+          "title": "الهندسة والقياس: الوحدة الثالثة — في بعدين وثلاثة أبعاد",
+          "lessons": [
+            { "id": "pm-3-1", "title": "النظام الإحداثي المتعامد في ثلاثة أبعاد", "page": 48 },
+            { "id": "pm-3-2", "title": "المتجهات في الفراغ", "page": 54 },
+            { "id": "pm-3-3", "title": "ضرب المتجهات", "page": 63 }
+          ]
+        },
+        {
+          "id": "pm-algebra-4",
+          "title": "الهندسة الفراغية: الوحدة الرابعة — الخطوط والمستويات",
+          "lessons": [
+            { "id": "pm-4-1", "title": "معادلة المستقيم في الفراغ", "page": 80 },
+            { "id": "pm-4-2", "title": "معادلة المستوى في الفراغ", "page": 90 }
+          ]
+        },
+        {
+          "id": "pm-calc-1",
+          "title": "التفاضل: الوحدة الأولى — الاشتقاق وتطبيقاته",
+          "lessons": [
+            { "id": "pm-5-1", "title": "الاشتقاق الضمني والبارامتري", "page": 108 },
+            { "id": "pm-5-2", "title": "المشتقات العليا للدالة", "page": 113 },
+            { "id": "pm-5-3", "title": "مشتقات الدوال الأسية واللوغاريتمية", "page": 117 },
+            { "id": "pm-5-4", "title": "المعدلات الزمنية المرتبطة", "page": 128 }
+          ]
+        },
+        {
+          "id": "pm-calc-2",
+          "title": "التفاضل: الوحدة الثانية — سلوك الدالة ورسم المنحنيات",
+          "lessons": [
+            { "id": "pm-6-1", "title": "تزايد وتناقص الدوال", "page": 138 },
+            { "id": "pm-6-2", "title": "القيم العظمى والصغرى (القيم القصوى)", "page": 142 },
+            { "id": "pm-6-3", "title": "دراسة المنحنيات", "page": 148 },
+            { "id": "pm-6-4", "title": "تطبيقات على القيم العظمى والصغرى", "page": 158 }
+          ]
+        },
+        {
+          "id": "pm-calc-3",
+          "title": "التكامل: الوحدة الثالثة — التكامل المحدد وتطبيقاته",
+          "lessons": [
+            { "id": "pm-7-1", "title": "تكامل الدوال الأسية واللوغاريتمية", "page": 166 },
+            { "id": "pm-7-2", "title": "طرق التكامل", "page": 172 },
+            { "id": "pm-7-3", "title": "التكامل المحدد", "page": 182 },
+            { "id": "pm-7-4", "title": "تطبيقات على التكامل المحدد", "page": 189 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "applied_math",
+      "name": "الرياضيات التطبيقية",
+      "short": "تطبيقية",
+      "tracks": ["math"],
+      "book": "applied_Mathematics_ARABIC_Sec3.pdf",
+      "units": [
+        {
+          "id": "am-stat-1",
+          "title": "الاستاتيكا: الوحدة الأولى — العزوم",
+          "lessons": [
+            { "id": "am-1-1", "title": "عزم قوة بالنسبة لنقطة في نظام إحداثي ثنائي الأبعاد", "page": 10 }
+          ]
+        },
+        {
+          "id": "am-stat-2",
+          "title": "الاستاتيكا: الوحدة الثانية — القوى المستوية",
+          "lessons": [
+            { "id": "am-2-1", "title": "محصلة القوى المتوازية المستوية", "page": 22 },
+            { "id": "am-2-2", "title": "اتزان مجموعة من القوى المستوية", "page": 32 }
+          ]
+        },
+        {
+          "id": "am-stat-3",
+          "title": "الاستاتيكا: الوحدة الثالثة — الازدواجات",
+          "lessons": [
+            { "id": "am-3-1", "title": "الازدواجات", "page": 42 },
+            { "id": "am-3-2", "title": "الازدواج المحصل", "page": 50 }
+          ]
+        },
+        {
+          "id": "am-dyn-1",
+          "title": "الديناميكا: الوحدة الأولى — الحركة في خط مستقيم",
+          "lessons": [
+            { "id": "am-4-1", "title": "تفاضل وتكامل الدوال المتجهة", "page": 72 }
+          ]
+        },
+        {
+          "id": "am-dyn-2",
+          "title": "الديناميكا: الوحدة الثانية — تطبيقات على قوانين نيوتن",
+          "lessons": [
+            { "id": "am-5-1", "title": "حركة الأجسام متغيرة الكتلة أو العجلة", "page": 88 },
+            { "id": "am-5-2", "title": "حركة الأجسام المتصلة", "page": 95 },
+            { "id": "am-5-3", "title": "الدفع", "page": 113 }
+          ]
+        },
+        {
+          "id": "am-dyn-3",
+          "title": "الديناميكا: الوحدة الثالثة — الشغل والطاقة والقدرة",
+          "lessons": [
+            { "id": "am-6-1", "title": "الشغل", "page": 124 },
+            { "id": "am-6-2", "title": "الطاقة", "page": 136 },
+            { "id": "am-6-3", "title": "القدرة", "page": 150 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "biology_science",
+      "name": "الأحياء",
+      "short": "الأحياء",
+      "tracks": ["science"],
+      "book": null,
+      "note": "كتاب الأحياء لسه ما وصلش. المادة ظاهرة في شعبتك، وهنضيف وحداتها أول ما يوصل الفهرس الرسمي.",
+      "units": []
+    },
+    {
+      "id": "lang2_french",
+      "name": "اللغة الفرنسية",
+      "short": "فرنساوي",
+      "tracks": [],
+      "optional": true,
+      "book": "Une_deuxieme_langue_francaise_Sec3.pdf",
+      "units": [
+        {
+          "id": "fr-book",
+          "title": "Club@dos PLUS 3",
+          "lessons": [
+            { "id": "fr-1", "title": "Unité 1 — Le Club des sportifs", "page": 6 },
+            { "id": "fr-2", "title": "Unité 2 — Le Club des gourmands", "page": 20 },
+            { "id": "fr-3", "title": "Unité 3 — Le Club des explorateurs", "page": 38 },
+            { "id": "fr-4", "title": "Unité 4 — Le Club des voyageurs", "page": 52 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lang2_german",
+      "name": "اللغة الألمانية",
+      "short": "ألماني",
+      "tracks": [],
+      "optional": true,
+      "book": "Deutsch_language_Sec3.pdf",
+      "units": [
+        {
+          "id": "de-book",
+          "title": "Kursbuch",
+          "lessons": [
+            { "id": "de-10", "title": "Kapitel 10 — Gesundheit", "page": 8 },
+            { "id": "de-11", "title": "Kapitel 11 — In der Stadt unterwegs", "page": 18 },
+            { "id": "de-12", "title": "Kapitel 12 — Der Kunde ist König", "page": 28 },
+            { "id": "de-13", "title": "Kapitel 13 — Neue Kleider", "page": 38 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lang2_spanish",
+      "name": "اللغة الإسبانية",
+      "short": "إسباني",
+      "tracks": [],
+      "optional": true,
+      "book": "Espanol_language_Sec3.pdf",
+      "units": [
+        {
+          "id": "es-book",
+          "title": "¡VALE! Volumen 3",
+          "lessons": [
+            { "id": "es-14", "title": "Unidad 14 — En mi tiempo libre…" },
+            { "id": "es-15", "title": "Unidad 15 — Mi personaje" },
+            { "id": "es-16", "title": "Unidad 16 — En Internet" },
+            { "id": "es-17", "title": "Unidad 17 — ¿Qué voy a ser de mayor?" },
+            { "id": "es-18", "title": "Unidad 18 — En el centro comercial" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lang2_italian",
+      "name": "اللغة الإيطالية",
+      "short": "إيطالي",
+      "tracks": [],
+      "optional": true,
+      "book": "Italiano_language_Sec3.pdf",
+      "units": [
+        {
+          "id": "it-book",
+          "title": "Progetto Italiano Junior 3",
+          "lessons": [
+            { "id": "it-1", "title": "Unità 1 — Progetti… extrascolastici", "page": 7 },
+            { "id": "it-2", "title": "Unità 2 — Saremo tutti delle stelle!", "page": 13 },
+            { "id": "it-3", "title": "Unità 3 — Ambiente ed ecologia", "page": 21 },
+            { "id": "it-4", "title": "Unità 4 — L'ho sentita!", "page": 27 },
+            { "id": "it-5", "title": "Unità 5 — Facciamo spese", "page": 35 },
+            { "id": "it-6", "title": "Unità 6 — Che numero porti?", "page": 41 }
+          ]
+        }
+      ]
+    }
+  ]
+}

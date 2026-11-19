@@ -1,0 +1,242 @@
+<!doctype html>
+<!--
+  صفحة معاينة تصميم بس — مش بتتبني مع الموقع.
+  الكود اللي بيشحن فعلاً هو src/components/Mascot.jsx، والصفحة دي للمعاينة
+  بالمقاسات (56/80/120/340) وفي الوضعين.
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>شخصية لم المتراكم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#F4EFE6; --ink:#16204A; --accent:#5566D8; --site-bg:#060814; --site-ink:#DCDEF3; --site-line:rgba(152,161,225,.22); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:#EAE4D8; color:var(--ink); font-family:Cairo,system-ui,sans-serif; padding:40px 24px 80px; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 6px; font-weight:900; }
+  .sub { font-size:13px; opacity:.7; margin:0 0 32px; line-height:1.9; max-width:70ch; }
+  h2 { font-size:15px; font-weight:800; margin:38px 0 14px; opacity:.8; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
+  .card { background:var(--paper); border:1px solid rgba(22,32,74,.14); border-radius:24px; padding:28px; }
+  .card.center { display:flex; flex-direction:column; align-items:center; }
+  .fig { width:100%; max-width:340px; color:var(--ink); display:block; }
+  .dark { background:var(--site-bg); border-color:var(--site-line); }
+  .dark .fig { color:var(--site-ink); }
+  .lock { text-align:center; margin-top:22px; }
+  .lock b { display:block; font-size:38px; font-weight:900; line-height:1; }
+  .lock small { display:block; font-size:11px; font-weight:700; margin-top:11px; opacity:.66; }
+  .row { display:flex; gap:18px; align-items:flex-end; justify-content:center; margin-top:26px; flex-wrap:wrap; }
+  .row > div { text-align:center; }
+  .row span { display:block; font-size:9px; font-weight:700; opacity:.5; margin-top:6px; }
+  .es { display:flex; align-items:center; gap:26px; background:var(--paper); border:1px solid rgba(22,32,74,.14); border-radius:22px; padding:24px 28px; }
+  .es .fig { width:220px; flex:none; }
+  .es h3 { margin:0 0 8px; font-size:20px; font-weight:900; }
+  .es p { margin:0; font-size:13px; line-height:1.85; opacity:.74; max-width:46ch; }
+  .es .tag { display:inline-block; margin-bottom:10px; font-size:10px; font-weight:800; color:var(--accent); border:1px solid rgba(85,102,216,.4); background:rgba(85,102,216,.08); border-radius:999px; padding:3px 10px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <!-- ============ book ============ -->
+  <symbol id="book" viewBox="0 0 320 300">
+    <g fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 212C64 200 112 190 148 196V268C112 262 64 268 24 280Z" />
+      <path d="M276 212C236 200 188 190 152 196V268C188 262 236 268 276 280Z" />
+      <path d="M24 280C64 268 112 262 148 268C184 262 236 268 276 280" />
+      <path d="M24 290C64 278 112 272 148 278C184 272 236 278 276 290" />
+      <path d="M150 196V268" />
+    </g>
+    <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" opacity=".8">
+      <path d="M46 226C66 223 86 222 106 224" />
+      <path d="M46 240C66 237 86 236 106 238" />
+      <path d="M46 254C66 251 86 250 106 252" />
+      <path d="M194 222C214 219 234 220 254 224" />
+      <path d="M194 236C214 233 234 234 254 238" />
+      <path d="M194 250C210 247 226 248 238 251" />
+    </g>
+  </symbol>
+
+  <!-- ============ heads ============ -->
+  <symbol id="head" viewBox="0 0 320 300">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="150" cy="84" rx="40" ry="42" fill="var(--mascot-bg)" />
+      <circle cx="133" cy="94" r="14" />
+      <circle cx="167" cy="94" r="14" />
+      <path d="M147 92H153" />
+      <path d="M119 92L109 88" />
+      <path d="M181 92L191 88" />
+      <path d="M143 112C147 117 153 117 157 112" />
+    </g>
+    <circle cx="133" cy="96" r="3.8" fill="currentColor" />
+    <circle cx="167" cy="96" r="3.8" fill="currentColor" />
+    <!-- hair: one solid mass, fringe dips over the top of the frames -->
+    <path d="M108 80C108 34 126 12 150 12C174 12 192 34 192 80C188 86 180 80 172 84C164 88 158 82 150 84C142 86 136 82 128 85C120 88 112 84 108 80Z" fill="currentColor" />
+  </symbol>
+
+  <symbol id="head-worried" viewBox="0 0 320 300">
+    <g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="150" cy="84" rx="40" ry="42" fill="var(--mascot-bg)" />
+      <circle cx="133" cy="94" r="14" />
+      <circle cx="167" cy="94" r="14" />
+      <path d="M147 92H153" />
+      <path d="M119 92L109 88" />
+      <path d="M181 92L191 88" />
+      <path d="M143 118C147 111 153 111 157 118" />
+    </g>
+    <circle cx="133" cy="96" r="3.8" fill="currentColor" />
+    <circle cx="167" cy="96" r="3.8" fill="currentColor" />
+    <path d="M108 80C108 34 126 12 150 12C174 12 192 34 192 80C188 86 180 80 172 84C164 88 158 82 150 84C142 86 136 82 128 85C120 88 112 84 108 80Z" fill="currentColor" />
+  </symbol>
+
+  <!-- ============ sweater ============ -->
+  <symbol id="torso" viewBox="0 0 320 300">
+    <!-- neck: paper fill only, so the jaw flows into the collar with no pipe -->
+    <path d="M132 104H168V142H132Z" fill="var(--mascot-bg)" />
+    <path d="M94 216C90 194 94 170 102 158C109 144 126 132 150 132C174 132 191 144 198 158C206 170 210 194 206 216Z"
+          fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round" />
+    <!-- crew collar: wide and shallow, ends tucked inside the silhouette -->
+    <path d="M126 136C131 154 169 154 174 136" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" />
+    <path d="M130 142C135 152 165 152 170 142" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" opacity=".4" />
+    <!-- raglan shoulder seams -->
+    <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".45">
+      <path d="M131 152C126 160 123 168 122 176" />
+      <path d="M169 152C174 160 177 168 178 176" />
+    </g>
+    <!-- placket + buttons -->
+    <path d="M150 154V220" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" />
+    <circle cx="150" cy="170" r="3.2" fill="currentColor" />
+    <circle cx="150" cy="184" r="3.2" fill="currentColor" />
+    <!-- fabric folds -->
+    <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" opacity=".45">
+      <path d="M117 178C121 188 123 198 123 208" />
+      <path d="M183 178C179 188 177 198 177 208" />
+      <path d="M131 208C136 211 143 211 147 208" />
+      <path d="M153 208C158 211 164 211 168 208" />
+    </g>
+  </symbol>
+
+  <!-- ============ calm: writing, hands on the book ============ -->
+  <symbol id="boy" viewBox="0 0 320 300">
+    <use href="#torso" />
+    <use href="#head" />
+    <use href="#book" />
+    <!-- left hand writing, pencil through the fist -->
+    <path d="M112 232L86 204" stroke="var(--accent)" stroke-width="8.5" stroke-linecap="round" />
+    <path d="M76 194L88 196L83 208Z" fill="currentColor" />
+    <g transform="rotate(-16 122 236)">
+      <rect x="104" y="223" width="38" height="27" rx="11" fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" />
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".6">
+        <path d="M132 229H140" />
+        <path d="M132 236H140" />
+        <path d="M132 243H139" />
+      </g>
+    </g>
+    <!-- writing strokes at the pencil tip -->
+    <g fill="none" stroke="currentColor" stroke-width="4.2" stroke-linecap="round">
+      <path d="M66 188L60 181" />
+      <path d="M62 198L54 196" />
+      <path d="M70 178L70 169" />
+    </g>
+    <!-- right hand holding the page -->
+    <g transform="rotate(20 216 234)">
+      <rect x="198" y="220" width="38" height="28" rx="12" fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" />
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".6">
+        <path d="M212 228H203" />
+        <path d="M213 236H202" />
+        <path d="M213 244H204" />
+      </g>
+    </g>
+  </symbol>
+
+  <!-- ============ worried: pencil down, both hands still ============ -->
+  <symbol id="boy-worried" viewBox="0 0 320 300">
+    <use href="#torso" />
+    <use href="#head-worried" />
+    <use href="#book" />
+    <!-- pencil lying on the page -->
+    <path d="M104 244L78 232" stroke="var(--accent)" stroke-width="8.5" stroke-linecap="round" />
+    <path d="M68 226L80 224L80 236Z" fill="currentColor" />
+    <!-- left hand flat on the page -->
+    <g transform="rotate(-10 122 226)">
+      <rect x="104" y="213" width="38" height="27" rx="11" fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" />
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".6">
+        <path d="M132 219H140" />
+        <path d="M132 226H140" />
+        <path d="M132 233H139" />
+      </g>
+    </g>
+    <!-- right hand flat on the page -->
+    <g transform="rotate(16 214 232)">
+      <rect x="196" y="219" width="38" height="27" rx="11" fill="var(--mascot-bg)" stroke="currentColor" stroke-width="5.5" />
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity=".6">
+        <path d="M210 225H202" />
+        <path d="M211 232H201" />
+        <path d="M211 239H203" />
+      </g>
+    </g>
+    <!-- sweat bead -->
+    <path d="M196 48C196 48 202 58 202 63C202 67 199 69 196 69C193 69 190 67 190 63C190 58 196 48 196 48Z" fill="var(--accent)" />
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <h1>ولد بيكتب في كتاب أكبر منه</h1>
+  <p class="sub">نفس لغة رسمتك — شعر أسود كتلة واحدة، نظارة، وقلم في إيده. الجسم بقى بلوفر بياقة وأزرار وخطوط قماش، والإيدين بقى فيهم صوابع</p>
+
+  <div class="grid">
+    <div class="card center" style="--mascot-bg:#F4EFE6">
+      <svg class="fig" viewBox="0 0 320 300"><use href="#boy" /></svg>
+      <div class="lock"><b>لم المتراكم</b><small>خطوة بخطوة نلمّ اللي فات</small></div>
+      <div class="row">
+        <div><svg width="120" height="112" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy" /></svg><span>120</span></div>
+        <div><svg width="80" height="75" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy" /></svg><span>80</span></div>
+        <div><svg width="56" height="52" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy" /></svg><span>56</span></div>
+      </div>
+    </div>
+
+    <div class="card center" style="--mascot-bg:#F4EFE6">
+      <svg class="fig" viewBox="0 0 320 300"><use href="#boy-worried" /></svg>
+      <div class="row">
+        <div><svg width="120" height="112" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy-worried" /></svg><span>120</span></div>
+        <div><svg width="80" height="75" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy-worried" /></svg><span>80</span></div>
+        <div><svg width="56" height="52" viewBox="0 0 320 300" style="color:#16204A;--mascot-bg:#F4EFE6"><use href="#boy-worried" /></svg><span>56</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>جوّه الداشبورد</h2>
+  <div class="es" style="--mascot-bg:#F4EFE6">
+    <svg class="fig" viewBox="0 0 320 300" style="color:#16204A"><use href="#boy-worried" /></svg>
+    <div>
+      <span class="tag">متراكم ٥٠ درس</span>
+      <h3>خد نفس، ده مش كله النهاردة</h3>
+      <p>عندك ٥٠ درس لسه، وده رقم كبير لو بصيت له كله مرة واحدة. الخطة بتاخد وقتك الحقيقي وتقسمه على أيام، فبتشوف كل يوم اللي يخصه بس</p>
+    </div>
+  </div>
+
+  <h2>«خلصت النهاردة»</h2>
+  <div class="es" style="--mascot-bg:#F4EFE6">
+    <svg class="fig" viewBox="0 0 320 300" style="color:#16204A"><use href="#boy" /></svg>
+    <div>
+      <span class="tag">خلصت النهاردة</span>
+      <h3>كده تمام، الباقي بكرة</h3>
+      <p>مفيش حاجة هربت منك، في فرق بين إنك متأخر وإنك مش عارف تبدأ</p>
+    </div>
+  </div>
+
+  <h2>غامق</h2>
+  <div class="grid">
+    <div class="card dark center" style="--mascot-bg:#060814">
+      <svg class="fig" style="color:#DCDEF3" viewBox="0 0 320 300"><use href="#boy" /></svg>
+    </div>
+    <div class="card dark center" style="--mascot-bg:#060814">
+      <svg class="fig" style="color:#DCDEF3" viewBox="0 0 320 300"><use href="#boy-worried" /></svg>
+    </div>
+  </div>
+</div>
+</body>
+</html>
