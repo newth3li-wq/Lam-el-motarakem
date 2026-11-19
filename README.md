@@ -74,6 +74,22 @@ npm run build
 ![قبل](docs/screenshots/mascot-before.png)
 ![بعد](docs/screenshots/mascot-after.png)
 
+## النشر على GitHub Pages
+
+الموقع منشور على: **https://newth3li-wq.github.io/Lam-el-motarakem/**
+
+```bash
+cd app/web
+npm run build:pages      # يبني على /Lam-el-motarakem/ ويطلّع الملفات في جذر الريبو
+git add -A && git commit -m "deploy: تحديث نسخة Pages" && git push
+```
+
+`build:pages` بيكتب في جذر الريبو: `index.html` و`assets/` و`404.html` (نسخة من index عشان الروابط
+الداخلية تفتح) و`.nojekyll`. **الملفات دي مولّدة — متعدّلهاش بإيدك**، أي تعديل بيحصل في `app/web/src`.
+
+مهم: Pages بيخدم ملفات ثابتة بس، فمفيش API هناك. النسخة المنشورة بتعرض الصفحة التعريفية والواجهة،
+لكن إنشاء حساب أو خطة محتاجين السيرفر شغّال (محليًا أو على استضافة).
+
 ## ملاحظات
 
 - التوكن في `localStorage` مش كوكي، فأي XSS في الواجهة يسرقه — الواجهة مبنية بحذر، بس ده قرار له تكلفة.

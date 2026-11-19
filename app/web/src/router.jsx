@@ -2,9 +2,27 @@ import { useCallback, useEffect, useState } from 'react';
 
 const NAV_EVENT = 'lam:nav';
 
+// GitHub Pages (وأي استضافة على مسار فرعي) بتشتغل تحت /<repo>/. الراوتر هنا هو
+// المكان الوحيد اللي بيكتب وبيقرا الـ URL، فكل التطبيق بياخد الـ base من هنا.
+const BASE = (import.meta.env.BASE_URL || '/').replace(/\/+$/, ''); // '' أو '/Lam-el-motarakem'
+const ABSOLUTE = /^[a-z][a-z0-9+.-]*:/i;
+
+export function withBase(to) {
+  if (!to || ABSOLUTE.test(to) || to.startsWith('#') || !to.startsWith('/')) return to;
+  return BASE + to;
+}
+
+function stripBase(pathname) {
+  const path = pathname || '/';
+  if (!BASE) return path;
+  if (path === BASE) return '/';
+  if (path.startsWith(BASE + '/')) return path.slice(BASE.length);
+  return path;
+}
+
 function currentLocation() {
   return {
-    path: location.pathname,
+    path: stripBase(location.pathname),
     search: location.search,
     hash: location.hash
   };
@@ -18,7 +36,7 @@ export function navigate(to, { replace = false, keepScroll = false } = {}) {
     return;
   }
 
-  const samePath = url.pathname === location.pathname && url.search === location.search;
+  const samePath = stripBase(url.pathname) === stripBase(location.pathname) && url.search === location.search;
 
   // same page + hash: just move to the section
   if (samePath && url.hash) {
@@ -35,7 +53,7 @@ export function navigate(to, { replace = false, keepScroll = false } = {}) {
     } catch { /* ignore */ }
   }
 
-  history[replace ? 'replaceState' : 'pushState']({ scrollY: 0 }, '', to);
+  history[replace ? 'replaceState' : 'pushState']({ scrollY: 0 }, '', withBase(to));
   window.dispatchEvent(new Event(NAV_EVENT));
 
   if (!keepScroll) {
@@ -89,5 +107,5 @@ export function Link({ to, children, onClick, replace = false, keepScroll = fals
     navigate(to, { replace, keepScroll });
   }, [to, onClick, replace, keepScroll, rest.target, rest.download]);
 
-  return <a href={to} onClick={handleClick} {...rest}>{children}</a>;
+  return <a href={withBase(to)} onClick={handleClick} {...rest}>{children}</a>;
 }

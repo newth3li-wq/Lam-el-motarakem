@@ -8,7 +8,11 @@ import { fileURLToPath } from 'node:url';
 const webRoot = fileURLToPath(new URL('.', import.meta.url));
 const shared = fileURLToPath(new URL('../shared/', import.meta.url));
 
+// GitHub Pages بيخدم الريبو على https://<user>.github.io/<repo>/، فالـ assets
+// والراوتس لازم تعرف الـ base ده. `npm run build:pages` بيحدده، والبناء العادي
+// بيفضل على الجذر.
 export default defineConfig({
+  base: process.env.PAGES_BASE || '/',
   plugins: [react()],
   server: {
     port: 5173,
